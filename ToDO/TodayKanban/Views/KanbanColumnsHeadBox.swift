@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CanbanColumnsHeadBox: View {
+struct KanbanColumnsHeadBox: View {
     
     let width = (UIScreen.main.bounds.width / 3) - 4
     let height = ((UIScreen.main.bounds.width / 3) - 4) * 5/8
@@ -28,5 +28,5 @@ struct CanbanColumnsHeadBox: View {
 }
 
 #Preview {
-    CanbanColumnsHeadBox(color: .yellow ,title: "To do")
+    KanbanColumnsHeadBox(color: .yellow ,title: "To do")
 }

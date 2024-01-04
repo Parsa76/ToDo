@@ -1,5 +1,5 @@
 //
-//  TodayCanbanViewModel.swift
+//  TodayKanbanViewModel.swift
 //  ToDO
 //
 //  Created by Parsa Keshavarz on 31.12.23.
@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-class TodayCanbanViewModel :ObservableObject {
+class TodayKanbanViewModel :ObservableObject {
     
     @Published var toDoItems: [ItemModel] = []
     @Published var doneITems: [ItemModel] = []
@@ -83,5 +83,22 @@ class TodayCanbanViewModel :ObservableObject {
         itemsDataService.deleteItem(item: item)
         
     }
+    func moveToDone(items: [ItemModel]) {
+        for item in items {
+            itemsDataService.updateItem(item: item, title: item.title, color: item.color, icon: item.icon, date: item.timeToDo, description: item.description, loc: item.loc , state: 2)
+        }
+    }
+    func moveToDoing(items :[ItemModel]) {
+        for item in items {
+            itemsDataService.updateItem(item: item, title: item.title, color: item.color, icon: item.icon, date: item.timeToDo, description: item.description, loc: item.loc , state: 1)
+        }
+    }
+    func moveToTodo(items :[ItemModel]) {
+        for item in items {
+            itemsDataService.updateItem(item: item, title: item.title, color: item.color, icon: item.icon, date: item.timeToDo, description: item.description, loc: item.loc , state: 0)
+        }
+    }
+    
+    
     
 }

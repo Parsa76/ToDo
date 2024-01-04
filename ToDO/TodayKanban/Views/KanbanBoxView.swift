@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CanbanBoxView: View {
+struct KanbanBoxView: View {
     
     let item: ItemModel
     let lenght = (UIScreen.main.bounds.width / 3 ) - 4
@@ -29,5 +29,5 @@ struct CanbanBoxView: View {
 }
 
 #Preview {
-    CanbanBoxView(item: DeveloperPreview.instance.item)
+    KanbanBoxView(item: DeveloperPreview.instance.item)
 }
