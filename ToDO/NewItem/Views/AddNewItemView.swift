@@ -16,6 +16,7 @@ struct AddNewItemView: View {
     @State var selectedDate: Date = Date()
     @State var selectedColor: Color = .red
     @State var selectedSymbol: String = "curlybraces.square.fill"
+    @State var sendNotification:Bool = false
     let StartigDate: Date = Date()
     let endingDate: Date = Calendar.current.date(from: DateComponents(year: 2080)) ?? Date()
     
@@ -44,6 +45,16 @@ struct AddNewItemView: View {
                     Section {
                         DatePicker("Select a Date", selection: $selectedDate, in: StartigDate...endingDate)
                             .datePickerStyle(.compact)
+                        HStack {
+                            Toggle(
+                                isOn: $sendNotification,
+                                label: {
+                                Text("Send me a reminder")
+                                })
+                            
+                           
+                            
+                        }
                     }
                     Section(header: Text("Discription")) {
                         descriptionSection
@@ -54,6 +65,7 @@ struct AddNewItemView: View {
                             IconView(color: selectedColor, symbol: selectedSymbol)
                             Spacer()
                         }
+                        
                     }
                     Section(header: Text("Pick a color")) {
                         colorPickerSection
@@ -69,7 +81,11 @@ struct AddNewItemView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        vm.saveToCoreData(title: titleTextField, timeToDo: selectedDate, color: selectedColor.codeAsInt(), icon: selectedSymbol, loc: locTextField, description: disciptionTextField, state: 0)
+                        let id = UUID().uuidString
+                        vm.saveToCoreData(id: id , title: titleTextField, timeToDo: selectedDate, color: selectedColor.codeAsInt(), icon: selectedSymbol, loc: locTextField, description: disciptionTextField, state: 0)
+                        if sendNotification {
+                            vm.notificationManager.scheduleNotification(title: titleTextField, subtitle: disciptionTextField, id: id, date: selectedDate)
+                        }
                         presentationMode.wrappedValue.dismiss()
                     }label: {
                         HStack {

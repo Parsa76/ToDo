@@ -17,16 +17,16 @@ class HomeViewModel: ObservableObject {
     
     private var cancellables = Set<AnyCancellable>()
     let itemsDataService: ItemDataService
-    
+    let notificationManager: NotificationManager
     init(dependencies: Dependencies) {
         self.itemsDataService = dependencies.itemDataSevice
+        self.notificationManager = dependencies.notificationManager
         addSubscribers()
     }
     private func addSubscribers() {
         $toDoItems
             .combineLatest(itemsDataService.$savedEntities)
             .map(mapToDoItems)
-            
             .sink { [weak self] (returnedItems) in
                 guard let self = self else {return}
                 self.toDoItems = returnedItems
@@ -77,5 +77,18 @@ class HomeViewModel: ObservableObject {
     
     func delete(item: ItemModel) {
         itemsDataService.deleteItem(item: item)
+        notificationManager.cancelNotification(id: item.id)
+    }
+    func moveToTodo(item : ItemModel) {
+        itemsDataService.updateItem(item: item, title: item.title, color: item.color, icon: item.icon, date: item.timeToDo, description: item.description, loc: item.loc , state: 0)
+        notificationManager.scheduleNotification(title: item.title, subtitle: item.description, id: item.id, date: item.timeToDo)
+    }
+    func moveToDoing(item: ItemModel) {
+        itemsDataService.updateItem(item: item, title: item.title, color: item.color, icon: item.icon, date: item.timeToDo, description: item.description, loc: item.loc , state: 1)
+        notificationManager.cancelNotification(id: item.id)
+    }
+    func moveToDone(item: ItemModel) {
+        itemsDataService.updateItem(item: item, title: item.title, color: item.color, icon: item.icon, date: item.timeToDo, description: item.description, loc: item.loc , state: 2)
+        notificationManager.cancelNotification(id: item.id)
     }
 }

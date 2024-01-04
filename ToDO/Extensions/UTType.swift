@@ -6,3 +6,8 @@
 //
 
 import Foundation
+import UniformTypeIdentifiers
+
+extension UTType {
+    static let itemModel = UTType(exportedAs: "co.parsa.itemModel")
+}

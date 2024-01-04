@@ -10,6 +10,8 @@ import Foundation
 
 extension Color {
     
+    static let theme = ColorTheme()
+    
     func codeAsInt() -> Int16 {
         switch self {
         case .red:
@@ -67,4 +69,9 @@ extension Color {
         }
     }
 
+}
+struct ColorTheme {
+    
+    let background = Color("BackgroundColor")
+   
 }

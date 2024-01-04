@@ -18,4 +18,13 @@ extension Date {
     func asShortDateString() -> String {
         return shortFormatter.string(from: self)
     }
+    private var mediumFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.timeStyle = .medium
+        formatter.dateStyle = .medium
+        return formatter
+    }
+    func asMediumDateString() -> String {
+        return mediumFormatter.string(from: self)
+    }
 }

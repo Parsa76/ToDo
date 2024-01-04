@@ -24,7 +24,7 @@ class ItemDataService {
             self.getItems()
         }
     }
-    // MARK: PUBLIC
+    // MARK: PUBLIC 
     func updateItem(item: ItemModel ,title: String , color: Int16, icon: String , date: Date , description:String , loc: String ,state :Int16) {
         if let entity = savedEntities.first(where: { $0.itemID ==  item.id}) {
             update(entity: entity, title: title, color: color, icon: icon, date: date, description: description, loc: loc, state: state)
@@ -43,7 +43,7 @@ class ItemDataService {
         return ItemModel(id: entity.itemID ?? "", title: entity.title ?? "", timeToDo: entity.date ?? Date(), color: entity.color, icon: entity.icon ?? "", loc: entity.loc ?? "", description: entity.itemDescription ?? "", state: entity.state)
     }
     // MARK: PRIVATE
-    private func getItems() {
+     private func getItems() {
         let request = NSFetchRequest<ItemEntity>(entityName: entityName)
         do {
              savedEntities =  try container.viewContext.fetch(request)

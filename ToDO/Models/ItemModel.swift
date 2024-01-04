@@ -6,8 +6,10 @@
 //
 
 import Foundation
+import CoreTransferable
 
-struct ItemModel: Identifiable{
+
+struct ItemModel: Identifiable ,Codable,  Equatable , Transferable{
     let id: String
     let title: String
     let timeToDo: Date
@@ -27,5 +29,10 @@ struct ItemModel: Identifiable{
         self.description = description
         self.state = state
     }
+    static var transferRepresentation: some TransferRepresentation {
+        CodableRepresentation(contentType: .itemModel)
+    }
+ 
+   
    
 }

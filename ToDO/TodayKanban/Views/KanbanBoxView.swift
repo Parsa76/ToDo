@@ -10,21 +10,22 @@ import SwiftUI
 struct KanbanBoxView: View {
     
     let item: ItemModel
-    let lenght = (UIScreen.main.bounds.width / 3 ) - 4
+    let lenght = (UIScreen.main.bounds.width / 4 ) 
     
     var body: some View {
         VStack(alignment: .leading) {
             Text(item.title)
                 .font(.title3)
-            
             Text(item.timeToDo.asShortDateString())
                 .font(.subheadline)
         }
         .frame(width: lenght , height: lenght)
         .background(
             RoundedRectangle(cornerRadius: 10)
-                .fill(.ultraThickMaterial)
+                .fill(Color.theme.background)
+                
         )
+        
     }
 }
 

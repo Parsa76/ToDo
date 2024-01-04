@@ -18,12 +18,13 @@ struct ToDOApp: App {
                         .tabItem {
                             Label("Home",systemImage: "house.circle")
                         }
-                    TodayCanbanView(dependencies: dependencies)
+                    TodayKanbanView(dependencies: dependencies)
                         .tabItem {
                             Label("Canban",systemImage: "calendar.circle.fill")
                         }
                 }
             }
+            .frame(height: UIScreen.main.bounds.height)
             .navigationViewStyle(StackNavigationViewStyle())
         }
     }

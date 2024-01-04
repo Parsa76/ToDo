@@ -8,11 +8,21 @@
 import SwiftUI
 
 struct KanbonColumnView: View {
+    let width = UIScreen.main.bounds.width / 3
+    
+    var items: [ItemModel]
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(spacing: 6) {
+            ForEach(items) { item in
+                KanbanBoxView(item: item)
+                    .draggable(item)
+                }
+            }
+        .frame(width: width )
     }
+    
 }
 
 #Preview {
-    KanbonColumnView()
+    KanbonColumnView(items: [])
 }

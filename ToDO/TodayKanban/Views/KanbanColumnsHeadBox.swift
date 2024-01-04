@@ -9,8 +9,8 @@ import SwiftUI
 
 struct KanbanColumnsHeadBox: View {
     
-    let width = (UIScreen.main.bounds.width / 3) - 4
-    let height = ((UIScreen.main.bounds.width / 3) - 4) * 5/8
+    let width = (UIScreen.main.bounds.width / 4)
+    let height = (UIScreen.main.bounds.width / 3) * 5/8
     let color: Color
     let title: String
     

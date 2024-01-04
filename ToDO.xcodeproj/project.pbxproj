@@ -27,12 +27,15 @@
 		42D321DD2B417CDB00248069 /* IconRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D321DC2B417CDB00248069 /* IconRowView.swift */; };
 		42D321E12B41A97A00248069 /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D321E02B41A97A00248069 /* DetailsView.swift */; };
 		42D321E32B41ACAD00248069 /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D321E22B41ACAD00248069 /* DetailsViewModel.swift */; };
-		42D321E62B41F72F00248069 /* TodayCanbanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D321E52B41F72F00248069 /* TodayCanbanView.swift */; };
-		42D321E82B41F89C00248069 /* TodayCanbanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D321E72B41F89C00248069 /* TodayCanbanViewModel.swift */; };
-		42EC53372B4333760044A9CD /* CanbanBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EC53362B4333760044A9CD /* CanbanBoxView.swift */; };
+		42D321E62B41F72F00248069 /* TodayKanbanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D321E52B41F72F00248069 /* TodayKanbanView.swift */; };
+		42D321E82B41F89C00248069 /* TodayKanbanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D321E72B41F89C00248069 /* TodayKanbanViewModel.swift */; };
+		42EC53372B4333760044A9CD /* KanbanBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EC53362B4333760044A9CD /* KanbanBoxView.swift */; };
 		42EC53392B4335890044A9CD /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EC53382B4335890044A9CD /* Date.swift */; };
-		42EC533B2B441C450044A9CD /* CanbanColumnsHeadBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EC533A2B441C450044A9CD /* CanbanColumnsHeadBox.swift */; };
+		42EC533B2B441C450044A9CD /* KanbanColumnsHeadBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EC533A2B441C450044A9CD /* KanbanColumnsHeadBox.swift */; };
+		42EC533E2B44A48D0044A9CD /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EC533D2B44A48D0044A9CD /* NotificationManager.swift */; };
+		42EC534A2B4579160044A9CD /* UTType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EC53492B4579160044A9CD /* UTType.swift */; };
 		42FB07372B3E17A700D755A6 /* SymbolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FB07362B3E17A700D755A6 /* SymbolView.swift */; };
+		42FDCD592B467677008A7730 /* KanbonColumnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FDCD582B467677008A7730 /* KanbonColumnView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,13 +60,17 @@
 		42D321DC2B417CDB00248069 /* IconRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconRowView.swift; sourceTree = "<group>"; };
 		42D321E02B41A97A00248069 /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
 		42D321E22B41ACAD00248069 /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
-		42D321E52B41F72F00248069 /* TodayCanbanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCanbanView.swift; sourceTree = "<group>"; };
-		42D321E72B41F89C00248069 /* TodayCanbanViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCanbanViewModel.swift; sourceTree = "<group>"; };
-		42EC53362B4333760044A9CD /* CanbanBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanbanBoxView.swift; sourceTree = "<group>"; };
+		42D321E52B41F72F00248069 /* TodayKanbanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayKanbanView.swift; sourceTree = "<group>"; };
+		42D321E72B41F89C00248069 /* TodayKanbanViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayKanbanViewModel.swift; sourceTree = "<group>"; };
+		42EC53362B4333760044A9CD /* KanbanBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KanbanBoxView.swift; sourceTree = "<group>"; };
 		42EC53382B4335890044A9CD /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
-		42EC533A2B441C450044A9CD /* CanbanColumnsHeadBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanbanColumnsHeadBox.swift; sourceTree = "<group>"; };
+		42EC533A2B441C450044A9CD /* KanbanColumnsHeadBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KanbanColumnsHeadBox.swift; sourceTree = "<group>"; };
 		42EC533C2B442B820044A9CD /* ToDO.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ToDO.entitlements; sourceTree = "<group>"; };
+		42EC533D2B44A48D0044A9CD /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		42EC53462B4575990044A9CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		42EC53492B4579160044A9CD /* UTType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UTType.swift; sourceTree = "<group>"; };
 		42FB07362B3E17A700D755A6 /* SymbolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolView.swift; sourceTree = "<group>"; };
+		42FDCD582B467677008A7730 /* KanbonColumnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KanbonColumnView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,8 +105,9 @@
 		425CDCE32B3C8DAE00C9A0BA /* ToDO */ = {
 			isa = PBXGroup;
 			children = (
+				42EC53462B4575990044A9CD /* Info.plist */,
 				42EC533C2B442B820044A9CD /* ToDO.entitlements */,
-				42D321E42B41F70000248069 /* TodayCanban */,
+				42D321E42B41F70000248069 /* TodayKanban */,
 				425CDD0D2B3DD8EF00C9A0BA /* NewItem */,
 				425CDD012B3CB0B300C9A0BA /* Home */,
 				425CDCF22B3C8E4800C9A0BA /* Models */,
@@ -132,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				425CDCFA2B3C902D00C9A0BA /* ItemDataService.swift */,
+				42EC533D2B44A48D0044A9CD /* NotificationManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -143,6 +152,7 @@
 				42D321D62B3EE94C00248069 /* Color.swift */,
 				42D321DA2B40937E00248069 /* Int16.swift */,
 				42EC53382B4335890044A9CD /* Date.swift */,
+				42EC53492B4579160044A9CD /* UTType.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -212,21 +222,22 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
-		42D321E42B41F70000248069 /* TodayCanban */ = {
+		42D321E42B41F70000248069 /* TodayKanban */ = {
 			isa = PBXGroup;
 			children = (
 				42EC53352B4333400044A9CD /* ViewModels */,
 				42EC53342B4333330044A9CD /* Views */,
 			);
-			path = TodayCanban;
+			path = TodayKanban;
 			sourceTree = "<group>";
 		};
 		42EC53342B4333330044A9CD /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				42D321E52B41F72F00248069 /* TodayCanbanView.swift */,
-				42EC53362B4333760044A9CD /* CanbanBoxView.swift */,
-				42EC533A2B441C450044A9CD /* CanbanColumnsHeadBox.swift */,
+				42D321E52B41F72F00248069 /* TodayKanbanView.swift */,
+				42EC53362B4333760044A9CD /* KanbanBoxView.swift */,
+				42EC533A2B441C450044A9CD /* KanbanColumnsHeadBox.swift */,
+				42FDCD582B467677008A7730 /* KanbonColumnView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -234,7 +245,7 @@
 		42EC53352B4333400044A9CD /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				42D321E72B41F89C00248069 /* TodayCanbanViewModel.swift */,
+				42D321E72B41F89C00248069 /* TodayKanbanViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -255,6 +266,8 @@
 			dependencies = (
 			);
 			name = ToDO;
+			packageProductDependencies = (
+			);
 			productName = ToDO;
 			productReference = 425CDCE12B3C8DAE00C9A0BA /* ToDO.app */;
 			productType = "com.apple.product-type.application";
@@ -283,6 +296,8 @@
 				Base,
 			);
 			mainGroup = 425CDCD82B3C8DAE00C9A0BA;
+			packageReferences = (
+			);
 			productRefGroup = 425CDCE22B3C8DAE00C9A0BA /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -311,15 +326,17 @@
 			files = (
 				42EC53392B4335890044A9CD /* Date.swift in Sources */,
 				42D321DD2B417CDB00248069 /* IconRowView.swift in Sources */,
-				42D321E82B41F89C00248069 /* TodayCanbanViewModel.swift in Sources */,
+				42D321E82B41F89C00248069 /* TodayKanbanViewModel.swift in Sources */,
+				42FDCD592B467677008A7730 /* KanbonColumnView.swift in Sources */,
 				42D321E32B41ACAD00248069 /* DetailsViewModel.swift in Sources */,
 				42FB07372B3E17A700D755A6 /* SymbolView.swift in Sources */,
 				425CDCFD2B3C92D100C9A0BA /* ItemModel.swift in Sources */,
+				42EC534A2B4579160044A9CD /* UTType.swift in Sources */,
 				42950DAF2B3E0DEB0034C63A /* ColorCircleView.swift in Sources */,
 				4276A6D32B3E296D0032BA86 /* IconView.swift in Sources */,
 				425CDD062B3CB12700C9A0BA /* HomeView.swift in Sources */,
 				425CDD092B3CB1F500C9A0BA /* HomeViewModel.swift in Sources */,
-				42EC53372B4333760044A9CD /* CanbanBoxView.swift in Sources */,
+				42EC53372B4333760044A9CD /* KanbanBoxView.swift in Sources */,
 				425CDCF82B3C8EC800C9A0BA /* ItemContainer.xcdatamodeld in Sources */,
 				425CDD0C2B3CB36C00C9A0BA /* Dependencies.swift in Sources */,
 				42D321DB2B40937E00248069 /* Int16.swift in Sources */,
@@ -327,10 +344,11 @@
 				42D321E12B41A97A00248069 /* DetailsView.swift in Sources */,
 				42D321D72B3EE94C00248069 /* Color.swift in Sources */,
 				425CDCFB2B3C902D00C9A0BA /* ItemDataService.swift in Sources */,
-				42D321E62B41F72F00248069 /* TodayCanbanView.swift in Sources */,
+				42D321E62B41F72F00248069 /* TodayKanbanView.swift in Sources */,
 				425CDCE52B3C8DAE00C9A0BA /* ToDOApp.swift in Sources */,
-				42EC533B2B441C450044A9CD /* CanbanColumnsHeadBox.swift in Sources */,
+				42EC533B2B441C450044A9CD /* KanbanColumnsHeadBox.swift in Sources */,
 				425CDD142B3DDAE700C9A0BA /* AddNewItemViewModel.swift in Sources */,
+				42EC533E2B44A48D0044A9CD /* NotificationManager.swift in Sources */,
 				425CDD002B3CAFB800C9A0BA /* DeveloperPreview.swift in Sources */,
 				42D321D92B408F6500248069 /* ItemRowView.swift in Sources */,
 			);
@@ -470,6 +488,7 @@
 				DEVELOPMENT_TEAM = T245267YMV;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ToDO/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -504,6 +523,7 @@
 				DEVELOPMENT_TEAM = T245267YMV;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ToDO/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

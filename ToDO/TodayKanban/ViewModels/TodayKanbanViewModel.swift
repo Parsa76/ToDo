@@ -16,9 +16,11 @@ class TodayKanbanViewModel :ObservableObject {
     
     private var cancellables = Set<AnyCancellable>()
     let itemsDataService: ItemDataService
+    let notificationManager: NotificationManager
     
     init(dependencies: Dependencies) {
         self.itemsDataService = dependencies.itemDataSevice
+        self.notificationManager = dependencies.notificationManager
         addSubscribers()
     }
     
@@ -47,6 +49,7 @@ class TodayKanbanViewModel :ObservableObject {
                 guard let self = self else {return}
                 self.doingItems = returnedItems
             }
+            .store(in: &cancellables)
     }
     
     private func mapToDoItems(allItems: [ItemModel] ,itemEntities:[ItemEntity]) ->[ItemModel]{
@@ -79,24 +82,28 @@ class TodayKanbanViewModel :ObservableObject {
         //    .filter{$0.timeToDo.year == Date().year && $0.timeToDo.month == Date().month && $0.timeToDo.day == Date().day}
     }
     
-    func delete(item: ItemModel) {
-        itemsDataService.deleteItem(item: item)
-        
-    }
+  
     func moveToDone(items: [ItemModel]) {
         for item in items {
             itemsDataService.updateItem(item: item, title: item.title, color: item.color, icon: item.icon, date: item.timeToDo, description: item.description, loc: item.loc , state: 2)
+            notificationManager.cancelNotification(id: item.id)
+            
         }
+        
     }
     func moveToDoing(items :[ItemModel]) {
         for item in items {
             itemsDataService.updateItem(item: item, title: item.title, color: item.color, icon: item.icon, date: item.timeToDo, description: item.description, loc: item.loc , state: 1)
+            notificationManager.cancelNotification(id: item.id)
         }
+        
     }
     func moveToTodo(items :[ItemModel]) {
         for item in items {
             itemsDataService.updateItem(item: item, title: item.title, color: item.color, icon: item.icon, date: item.timeToDo, description: item.description, loc: item.loc , state: 0)
+            notificationManager.scheduleNotification(title: item.title, subtitle: item.description, id: item.id, date: item.timeToDo)
         }
+        
     }
     
     

@@ -9,98 +9,67 @@ import SwiftUI
 
 struct TodayKanbanView: View {
     
-
-    @StateObject var vm : TodayCanbanViewModel
+    
+    @StateObject var vm : TodayKanbanViewModel
     
     init(dependencies: Dependencies) {
-        _vm = StateObject(wrappedValue: TodayCanbanViewModel(dependencies: dependencies))
+        _vm = StateObject(wrappedValue: TodayKanbanViewModel(dependencies: dependencies))
     }
     var body: some View {
-        
-        let length = (UIScreen.main.bounds.width / 3) - 4
-        let height = UIScreen.main.bounds.height
-        let heightTitle = ((UIScreen.main.bounds.width / 3) - 4) * 5/8
+        let width = UIScreen.main.bounds.width / 3
+        let height  = UIScreen.main.bounds.height
         ScrollView {
-            HStack(alignment: .top ,spacing: 4) {
-                VStack (spacing:6) {
+            VStack (spacing: 6) {
+                HStack (alignment : .top){
+                    ZStack(alignment: .top) {
+                        Rectangle()
+                            .fill(Color.theme.background)
+                            .frame(width: width ,  height: UIScreen.main.bounds.height ,alignment: .top )
+                            .background(Color.clear)
+                        VStack {
+                            KanbanColumnsHeadBox(color: .blue, title: "To do")
+                            KanbonColumnView(items: vm.toDoItems)
+                        }
+                    }
+                    .dropDestination(for: ItemModel.self) { items, location in
+                        vm.moveToTodo(items: items)
+                        return true
+                    }
+                    ZStack(alignment: .top) {
+                        Rectangle()
+                            .fill(Color.theme.background)
+                            .frame(width: width ,  height: UIScreen.main.bounds.height ,alignment: .top )
+                            .background(Color.clear)
+                        VStack {
+                            KanbanColumnsHeadBox(color: .yellow, title: "Doing")
+                            KanbonColumnView(items: vm.doingItems)
+                        }
+                    }
+                    .dropDestination(for: ItemModel.self) { items, location in
+                        vm.moveToDoing(items: items)
+                        return true
+                    }
+                    ZStack(alignment: .top) {
+                        Rectangle()
+                            .fill(Color.theme.background)
+                            .frame(width: width ,  height: UIScreen.main.bounds.height ,alignment: .top )
+                            .background(Color.black)
+                        VStack {
+                            KanbanColumnsHeadBox(color: .green, title: "Done")
+                            KanbonColumnView(items: vm.doneITems)
+                        }
+                    }
+                    .dropDestination(for: ItemModel.self) { items, location in
+                        vm.moveToDone(items: items)
+                        return true
+                    }
                     
-                    HStack(alignment: .top) {
-                        KanbanColumnsHeadBox(color: .blue, title: "To do")
-                        KanbanColumnsHeadBox(color: .yellow, title: "Doing")
-                        KanbanColumnsHeadBox(color: .green, title: "Done")
-
-                    }
-                    HStack (alignment : .top){
-                        ZStack {
-                            VStack(spacing:6) {
-                                ForEach(vm.toDoItems) { i in
-                                    KanbanBoxView(item: i)
-                                        .draggable(i)
-                                }
-                            }
-                            .frame(width: length )
-
-                        }
-                        
-                        
-                        .background(Color.clear)
-                        .frame(width: length ,height: .infinity)
-                        .dropDestination(for: ItemModel.self) { items, location in
-                            vm.moveToTodo(items: items)
-                            return true
-                        }
-                      
-                        ZStack {
-                            VStack ( spacing:6) {
-                                ForEach(vm.doingItems) { i in
-                                    KanbanBoxView(item: i)
-                                        .draggable(i)
-               
-                                }
-                            }
-                            .frame(width: length )
-
-                        }
-                        
-                        
-                        .background(Color.clear)
-                        .frame(width: length , height: .infinity)
-                        .dropDestination(for: ItemModel.self) { items, location in
-                            vm.moveToDoing(items: items)
-                            return true
-                        }
-                        
-                        ZStack {
-                            VStack (spacing:6) {
-                                ForEach(vm.doneITems) { i in
-                                    KanbanBoxView(item: i)
-                                        .draggable(i)
-                                }
-                            }
-                            .frame(width: length )
-                            
-                        }
-                        
-                        
-                        .background(Color.clear)
-                        .frame(width: length ,height: .infinity)
-                        .dropDestination(for: ItemModel.self) { items, location in
-                            vm.moveToDone(items: items)
-                            return true
-                        }
-
-                        
-                        
-
-                        
-                        
-                    }
                 }
             }
             
         }
-        
     }
+    
 }
 
 #Preview {
