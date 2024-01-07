@@ -20,7 +20,7 @@ struct ToDOApp: App {
                         }
                     TodayKanbanView(dependencies: dependencies)
                         .tabItem {
-                            Label("Canban",systemImage: "calendar.circle.fill")
+                            Label("Kanban",systemImage: "calendar.circle.fill")
                         }
                 }
             }

@@ -26,7 +26,6 @@
 		42D321DB2B40937E00248069 /* Int16.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D321DA2B40937E00248069 /* Int16.swift */; };
 		42D321DD2B417CDB00248069 /* IconRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D321DC2B417CDB00248069 /* IconRowView.swift */; };
 		42D321E12B41A97A00248069 /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D321E02B41A97A00248069 /* DetailsView.swift */; };
-		42D321E32B41ACAD00248069 /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D321E22B41ACAD00248069 /* DetailsViewModel.swift */; };
 		42D321E62B41F72F00248069 /* TodayKanbanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D321E52B41F72F00248069 /* TodayKanbanView.swift */; };
 		42D321E82B41F89C00248069 /* TodayKanbanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D321E72B41F89C00248069 /* TodayKanbanViewModel.swift */; };
 		42EC53372B4333760044A9CD /* KanbanBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EC53362B4333760044A9CD /* KanbanBoxView.swift */; };
@@ -36,6 +35,9 @@
 		42EC534A2B4579160044A9CD /* UTType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EC53492B4579160044A9CD /* UTType.swift */; };
 		42FB07372B3E17A700D755A6 /* SymbolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FB07362B3E17A700D755A6 /* SymbolView.swift */; };
 		42FDCD592B467677008A7730 /* KanbonColumnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FDCD582B467677008A7730 /* KanbonColumnView.swift */; };
+		42FDCD5C2B4741DB008A7730 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FDCD5B2B4741DB008A7730 /* HapticManager.swift */; };
+		42FDCD5E2B47494D008A7730 /* EditCurrentItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FDCD5D2B47494D008A7730 /* EditCurrentItemView.swift */; };
+		42FDCD602B4A94F6008A7730 /* EditItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FDCD5F2B4A94F6008A7730 /* EditItemViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,7 +61,6 @@
 		42D321DA2B40937E00248069 /* Int16.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int16.swift; sourceTree = "<group>"; };
 		42D321DC2B417CDB00248069 /* IconRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconRowView.swift; sourceTree = "<group>"; };
 		42D321E02B41A97A00248069 /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
-		42D321E22B41ACAD00248069 /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
 		42D321E52B41F72F00248069 /* TodayKanbanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayKanbanView.swift; sourceTree = "<group>"; };
 		42D321E72B41F89C00248069 /* TodayKanbanViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayKanbanViewModel.swift; sourceTree = "<group>"; };
 		42EC53362B4333760044A9CD /* KanbanBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KanbanBoxView.swift; sourceTree = "<group>"; };
@@ -71,6 +72,9 @@
 		42EC53492B4579160044A9CD /* UTType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UTType.swift; sourceTree = "<group>"; };
 		42FB07362B3E17A700D755A6 /* SymbolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolView.swift; sourceTree = "<group>"; };
 		42FDCD582B467677008A7730 /* KanbonColumnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KanbonColumnView.swift; sourceTree = "<group>"; };
+		42FDCD5B2B4741DB008A7730 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
+		42FDCD5D2B47494D008A7730 /* EditCurrentItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCurrentItemView.swift; sourceTree = "<group>"; };
+		42FDCD5F2B4A94F6008A7730 /* EditItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditItemViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +145,7 @@
 			children = (
 				425CDCFA2B3C902D00C9A0BA /* ItemDataService.swift */,
 				42EC533D2B44A48D0044A9CD /* NotificationManager.swift */,
+				42FDCD5B2B4741DB008A7730 /* HapticManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -181,7 +186,6 @@
 			isa = PBXGroup;
 			children = (
 				425CDD082B3CB1F400C9A0BA /* HomeViewModel.swift */,
-				42D321E22B41ACAD00248069 /* DetailsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -207,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				425CDD102B3DDA8C00C9A0BA /* AddNewItemView.swift */,
+				42FDCD5D2B47494D008A7730 /* EditCurrentItemView.swift */,
 				42950DAE2B3E0DEB0034C63A /* ColorCircleView.swift */,
 				42FB07362B3E17A700D755A6 /* SymbolView.swift */,
 				4276A6D22B3E296D0032BA86 /* IconView.swift */,
@@ -218,6 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				425CDD132B3DDAE700C9A0BA /* AddNewItemViewModel.swift */,
+				42FDCD5F2B4A94F6008A7730 /* EditItemViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -328,10 +334,10 @@
 				42D321DD2B417CDB00248069 /* IconRowView.swift in Sources */,
 				42D321E82B41F89C00248069 /* TodayKanbanViewModel.swift in Sources */,
 				42FDCD592B467677008A7730 /* KanbonColumnView.swift in Sources */,
-				42D321E32B41ACAD00248069 /* DetailsViewModel.swift in Sources */,
 				42FB07372B3E17A700D755A6 /* SymbolView.swift in Sources */,
 				425CDCFD2B3C92D100C9A0BA /* ItemModel.swift in Sources */,
 				42EC534A2B4579160044A9CD /* UTType.swift in Sources */,
+				42FDCD5E2B47494D008A7730 /* EditCurrentItemView.swift in Sources */,
 				42950DAF2B3E0DEB0034C63A /* ColorCircleView.swift in Sources */,
 				4276A6D32B3E296D0032BA86 /* IconView.swift in Sources */,
 				425CDD062B3CB12700C9A0BA /* HomeView.swift in Sources */,
@@ -341,10 +347,12 @@
 				425CDD0C2B3CB36C00C9A0BA /* Dependencies.swift in Sources */,
 				42D321DB2B40937E00248069 /* Int16.swift in Sources */,
 				425CDD112B3DDA8C00C9A0BA /* AddNewItemView.swift in Sources */,
+				42FDCD5C2B4741DB008A7730 /* HapticManager.swift in Sources */,
 				42D321E12B41A97A00248069 /* DetailsView.swift in Sources */,
 				42D321D72B3EE94C00248069 /* Color.swift in Sources */,
 				425CDCFB2B3C902D00C9A0BA /* ItemDataService.swift in Sources */,
 				42D321E62B41F72F00248069 /* TodayKanbanView.swift in Sources */,
+				42FDCD602B4A94F6008A7730 /* EditItemViewModel.swift in Sources */,
 				425CDCE52B3C8DAE00C9A0BA /* ToDOApp.swift in Sources */,
 				42EC533B2B441C450044A9CD /* KanbanColumnsHeadBox.swift in Sources */,
 				425CDD142B3DDAE700C9A0BA /* AddNewItemViewModel.swift in Sources */,
@@ -492,8 +500,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -527,8 +535,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

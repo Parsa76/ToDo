@@ -15,12 +15,14 @@ class TodayKanbanViewModel :ObservableObject {
     @Published var doingItems: [ItemModel] = []
     
     private var cancellables = Set<AnyCancellable>()
-    let itemsDataService: ItemDataService
-    let notificationManager: NotificationManager
+    private let itemsDataService: ItemDataService
+    private let notificationManager: NotificationManager
+    private let hapticManager: HapticManager
     
     init(dependencies: Dependencies) {
         self.itemsDataService = dependencies.itemDataSevice
         self.notificationManager = dependencies.notificationManager
+        self.hapticManager = dependencies.hapticManager
         addSubscribers()
     }
     
@@ -89,6 +91,7 @@ class TodayKanbanViewModel :ObservableObject {
             notificationManager.cancelNotification(id: item.id)
             
         }
+        hapticManager.notification(type: .success)
         
     }
     func moveToDoing(items :[ItemModel]) {
@@ -96,6 +99,7 @@ class TodayKanbanViewModel :ObservableObject {
             itemsDataService.updateItem(item: item, title: item.title, color: item.color, icon: item.icon, date: item.timeToDo, description: item.description, loc: item.loc , state: 1)
             notificationManager.cancelNotification(id: item.id)
         }
+        hapticManager.notification(type: .success)
         
     }
     func moveToTodo(items :[ItemModel]) {
@@ -103,6 +107,7 @@ class TodayKanbanViewModel :ObservableObject {
             itemsDataService.updateItem(item: item, title: item.title, color: item.color, icon: item.icon, date: item.timeToDo, description: item.description, loc: item.loc , state: 0)
             notificationManager.scheduleNotification(title: item.title, subtitle: item.description, id: item.id, date: item.timeToDo)
         }
+        hapticManager.notification(type: .success)
         
     }
     

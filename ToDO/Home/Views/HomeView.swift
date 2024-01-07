@@ -10,9 +10,21 @@ import SwiftUI
 struct HomeView: View {
     @StateObject private var vm : HomeViewModel
     @State var showCreateNewItemSheet: Bool = false
+    @State var showEditView: Bool = false
     
     @State var itemToShow: ItemModel? = nil
+    
+    
+    // Mark: Edit items
+    @State var TitleToEdit: String = ""
+    @State var locToEdit: String = ""
+    @State var descToEdit: String = ""
+    @State var dateToEdit: Date = Date()
+    @State var iconToEdit: String = ""
+    @State var colorToEdit: Int16 = 0
+    @State var itemToEdit: ItemModel? = nil
     @State var showDetailsView: Bool = false
+    
     
     let dependencies: Dependencies
     init(dependencies: Dependencies) {
@@ -38,6 +50,9 @@ struct HomeView: View {
                     }
                     .sheet(isPresented: $showCreateNewItemSheet, content: {
                         AddNewItemView(dependencies: dependencies)
+                    })
+                    .sheet(isPresented: $showEditView, content: {
+                        EditCurrentItemView(title: $TitleToEdit, loc: $locToEdit, disc: $descToEdit, selectedDate: $dateToEdit, icon: $iconToEdit, color: $colorToEdit, item: itemToEdit, dependencies: dependencies)
                     })
                 }
                 ZStack {
@@ -92,6 +107,18 @@ extension HomeView {
                 } label: {
                     Image(systemName: "trash")
                 }
+                Button (role: .cancel) {
+                    itemToEdit = item
+                    TitleToEdit = item.title
+                    locToEdit = item.loc
+                    descToEdit = item.description
+                    iconToEdit = item.icon
+                    colorToEdit = item.color
+                    dateToEdit = item.timeToDo
+                    showEditView.toggle()
+                } label: {
+                    Text("Edit")
+                }.tint(.purple)
             }
             .swipeActions(edge: .leading, allowsFullSwipe: true) {
                 Button (role: .cancel) {
@@ -124,6 +151,19 @@ extension HomeView {
                 } label: {
                     Image(systemName: "trash")
                 }
+                Button (role: .cancel) {
+                    itemToEdit = item
+                    TitleToEdit = item.title
+                    locToEdit = item.loc
+                    descToEdit = item.description
+                    iconToEdit = item.icon
+                    colorToEdit = item.color
+                    dateToEdit = item.timeToDo
+                    showEditView.toggle()
+                } label: {
+                    Text("Edit")
+                }.tint(.purple)
+
             }
             .swipeActions(edge: .leading, allowsFullSwipe: true) {
                 Button (role: .cancel) {
@@ -133,7 +173,7 @@ extension HomeView {
                         
                 }.tint(.green)
                 Button (role: .cancel) {
-                    vm.moveToDone(item: item)
+                    vm.moveToDoing(item: item)
                 } label: {
                     Text("mark as doing")
                 }.tint(.yellow)
@@ -153,6 +193,18 @@ extension HomeView {
                 } label: {
                     Image(systemName: "trash")
                 }
+                Button (role: .cancel) {
+                    itemToEdit = item
+                    TitleToEdit = item.title
+                    locToEdit = item.loc
+                    descToEdit = item.description
+                    iconToEdit = item.icon
+                    colorToEdit = item.color
+                    dateToEdit = item.timeToDo
+                    showEditView.toggle()
+                } label: {
+                    Text("Edit")
+                }.tint(.purple)
             }
             .swipeActions(edge: .leading, allowsFullSwipe: true) {
                 Button (role: .cancel) {

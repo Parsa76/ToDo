@@ -19,9 +19,10 @@ struct KanbanColumnsHeadBox: View {
             RoundedRectangle(cornerRadius: 10)
                 .fill(color)
                 .frame(width: width, height: height)
+                
             Text(title)
-                .font(.largeTitle)
-                .fontWeight(.bold)
+                .font(.title)
+                .fontWeight(.heavy)
                 .foregroundColor(Color.white)
         }
     }

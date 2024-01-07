@@ -16,7 +16,6 @@ struct ItemRowView: View {
                     .font(.title3)
                     .foregroundStyle(Color.primary)
                     .bold()
-               
             }
             Spacer()
             Text(item.timeToDo.formatted())

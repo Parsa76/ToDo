@@ -35,7 +35,6 @@ struct AddNewItemView: View {
         NavigationView {
             VStack(alignment: .center) {
                 List {
-
                     Section {
                         titleSection
                     }
@@ -43,35 +42,18 @@ struct AddNewItemView: View {
                         locSection
                     }
                     Section {
-                        DatePicker("Select a Date", selection: $selectedDate, in: StartigDate...endingDate)
-                            .datePickerStyle(.compact)
-                        HStack {
-                            Toggle(
-                                isOn: $sendNotification,
-                                label: {
-                                Text("Send me a reminder")
-                                })
-                            
-                           
-                            
-                        }
+                        datePickerSection
                     }
                     Section(header: Text("Discription")) {
                         descriptionSection
                     }
                     Section {
-                        HStack(alignment: .center){
-                            Spacer()
-                            IconView(color: selectedColor, symbol: selectedSymbol)
-                            Spacer()
-                        }
-                        
+                        customizedIcon
                     }
                     Section(header: Text("Pick a color")) {
                         colorPickerSection
                     }
                     Section(header: Text("Pick an icon")) {
-                        
                         pcikSymbolSection
                     }
                 }
@@ -82,22 +64,21 @@ struct AddNewItemView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
                         let id = UUID().uuidString
-                        vm.saveToCoreData(id: id , title: titleTextField, timeToDo: selectedDate, color: selectedColor.codeAsInt(), icon: selectedSymbol, loc: locTextField, description: disciptionTextField, state: 0)
-                        if sendNotification {
-                            vm.notificationManager.scheduleNotification(title: titleTextField, subtitle: disciptionTextField, id: id, date: selectedDate)
-                        }
+                        vm.saveToCoreData(id: id , title: titleTextField, timeToDo: selectedDate, color: selectedColor.codeAsInt(), icon: selectedSymbol, loc: locTextField, description: disciptionTextField, state: 0 , notification: sendNotification)
+                        
                         presentationMode.wrappedValue.dismiss()
                     }label: {
                         HStack {
                             Image(systemName: "square.and.arrow.down")
                             Text("Save")
-                        }.accentColor(.green)
+                        }
+                        .accentColor(.green)
+                        .disabled(titleTextField.count < 3)
                     }
                 }
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button {
                         presentationMode.wrappedValue.dismiss()
-                        
                     }label: {
                         HStack {
                             Image(systemName: "trash")
@@ -130,6 +111,29 @@ extension AddNewItemView {
                 .lineLimit(4...6)
         }
     }
+    private var datePickerSection: some View {
+        VStack (alignment: .center){
+            DatePicker("Select a Date", selection: $selectedDate, in: StartigDate...endingDate)
+                .datePickerStyle(.compact)
+            HStack {
+                Toggle(
+                    isOn: $sendNotification,
+                    label: {
+                    Text("Send me a reminder")
+                    })
+            }
+
+        }
+        
+    }
+    private var customizedIcon: some View {
+        HStack(alignment: .center){
+            Spacer()
+            IconView(color: selectedColor, symbol: selectedSymbol)
+            Spacer()
+        }
+    }
+  
     private var colorPickerSection: some View {
         
         LazyVGrid(columns: columns){
@@ -139,8 +143,6 @@ extension AddNewItemView {
                         selectedColor = vm.colors[index]
                     }
             }
-            
-            
         }
     }
     private var pcikSymbolSection: some View {
@@ -153,6 +155,7 @@ extension AddNewItemView {
             }
         }
     }
+    
 }
 
 #Preview {
