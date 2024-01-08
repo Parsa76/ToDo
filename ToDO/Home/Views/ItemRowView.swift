@@ -20,7 +20,7 @@ struct ItemRowView: View {
             Spacer()
             Text(item.timeToDo.formatted())
                 .font(.subheadline)
-                .foregroundStyle(Color.secondary)
+                .foregroundStyle(item.timeToDo < Date() && item.state == 0 ? Color.red : Color.secondary)
             
         }
         .padding()

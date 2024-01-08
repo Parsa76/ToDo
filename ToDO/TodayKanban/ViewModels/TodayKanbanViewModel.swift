@@ -62,7 +62,6 @@ class TodayKanbanViewModel :ObservableObject {
             }
             .sorted(by: {$0.timeToDo < $1.timeToDo})
             .filter{($0.state == 0)}
-         //   .filter{$0.timeToDo.year == Date().year && $0.timeToDo.month == Date().month && $0.timeToDo.day == Date().day}
     }
     private func mapDoingItems(allItems: [ItemModel] ,itemEntities:[ItemEntity]) ->[ItemModel]{
     
@@ -72,7 +71,6 @@ class TodayKanbanViewModel :ObservableObject {
             }
             .sorted(by: {$0.timeToDo < $1.timeToDo})
             .filter{($0.state == 1)}
-           // .filter{$0.timeToDo.year == Date().year && $0.timeToDo.month == Date().month && $0.timeToDo.day == Date().day}
     }
     private func mapDoneItems(allItems: [ItemModel] ,itemEntities:[ItemEntity]) ->[ItemModel]{
        itemEntities
@@ -81,7 +79,6 @@ class TodayKanbanViewModel :ObservableObject {
             }
             .sorted(by: {$0.timeToDo < $1.timeToDo})
             .filter{($0.state == 2)}
-        //    .filter{$0.timeToDo.year == Date().year && $0.timeToDo.month == Date().month && $0.timeToDo.day == Date().day}
     }
     
   

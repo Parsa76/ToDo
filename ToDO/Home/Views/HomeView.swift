@@ -15,7 +15,7 @@ struct HomeView: View {
     @State var itemToShow: ItemModel? = nil
     
     
-    // Mark: Edit items
+    //Edit items
     @State var TitleToEdit: String = ""
     @State var locToEdit: String = ""
     @State var descToEdit: String = ""
@@ -108,14 +108,7 @@ extension HomeView {
                     Image(systemName: "trash")
                 }
                 Button (role: .cancel) {
-                    itemToEdit = item
-                    TitleToEdit = item.title
-                    locToEdit = item.loc
-                    descToEdit = item.description
-                    iconToEdit = item.icon
-                    colorToEdit = item.color
-                    dateToEdit = item.timeToDo
-                    showEditView.toggle()
+                    updateItemsToEdit(item: item)
                 } label: {
                     Text("Edit")
                 }.tint(.purple)
@@ -124,14 +117,14 @@ extension HomeView {
                 Button (role: .cancel) {
                     vm.itemsDataService.updateItem(item: item, title: item.title, color: item.color, icon: item.icon, date: item.timeToDo, description: item.description, loc: item.loc , state: 2)
                 } label: {
-                    Text("mark as done")
+                    Image(systemName: "checkmark.circle")
                     
                 }
                 .tint(.green)
                 Button (role: .cancel) {
                     vm.moveToTodo(item: item)
                 } label: {
-                    Text("mark as to do")
+                    Text("to do")
                     
                 }
                 .tint(.blue)
@@ -152,14 +145,7 @@ extension HomeView {
                     Image(systemName: "trash")
                 }
                 Button (role: .cancel) {
-                    itemToEdit = item
-                    TitleToEdit = item.title
-                    locToEdit = item.loc
-                    descToEdit = item.description
-                    iconToEdit = item.icon
-                    colorToEdit = item.color
-                    dateToEdit = item.timeToDo
-                    showEditView.toggle()
+                    updateItemsToEdit(item: item)
                 } label: {
                     Text("Edit")
                 }.tint(.purple)
@@ -169,13 +155,13 @@ extension HomeView {
                 Button (role: .cancel) {
                     vm.moveToDone(item: item)
                 } label: {
-                    Text("mark as done")
+                    Image(systemName: "checkmark.circle")
                         
                 }.tint(.green)
                 Button (role: .cancel) {
                     vm.moveToDoing(item: item)
                 } label: {
-                    Text("mark as doing")
+                    Image(systemName: "hourglass.circle")
                 }.tint(.yellow)
                 
             }
@@ -194,35 +180,38 @@ extension HomeView {
                     Image(systemName: "trash")
                 }
                 Button (role: .cancel) {
-                    itemToEdit = item
-                    TitleToEdit = item.title
-                    locToEdit = item.loc
-                    descToEdit = item.description
-                    iconToEdit = item.icon
-                    colorToEdit = item.color
-                    dateToEdit = item.timeToDo
-                    showEditView.toggle()
+                   updateItemsToEdit(item: item)
                 } label: {
                     Text("Edit")
                 }.tint(.purple)
             }
             .swipeActions(edge: .leading, allowsFullSwipe: true) {
                 Button (role: .cancel) {
-                    vm.itemsDataService.updateItem(item: item, title: item.title, color: item.color, icon: item.icon, date: item.timeToDo, description: item.description, loc: item.loc , state: 0)
+                    vm.moveToTodo(item: item)
                 } label: {
-                    Text("mark as to do")
+                    Text("to do")
                         
                 }.tint(.blue)
                 
                 Button (role: .cancel) {
-                    vm.itemsDataService.updateItem(item: item, title: item.title, color: item.color, icon: item.icon, date: item.timeToDo, description: item.description, loc: item.loc , state: 1)
+                    vm.moveToDoing(item: item)
                 } label: {
-                    Text("mark as doing")
+                    Image(systemName: "hourglass.circle")
                         
                 }.tint(.yellow)
             }
             
         }
+    }
+    func updateItemsToEdit(item: ItemModel) {
+        itemToEdit = item
+        TitleToEdit = item.title
+        locToEdit = item.loc
+        descToEdit = item.description
+        iconToEdit = item.icon
+        colorToEdit = item.color
+        dateToEdit = item.timeToDo
+        showEditView.toggle()
     }
 }
 
