@@ -20,7 +20,7 @@ struct EditCurrentItemView: View {
     @Binding var icon: String
     var item : ItemModel?
     
-    let StartigDate: Date = Date()
+    let StartigDate: Date
     let endingDate: Date = Calendar.current.date(from: DateComponents(year: 2080)) ?? Date()
     @State var sendNotification : Bool = true
     
@@ -43,6 +43,8 @@ struct EditCurrentItemView: View {
         self._color = color
         self.item = item
         _vm = StateObject(wrappedValue: EditItemViewModel(dependencies: dependencies))
+        
+        StartigDate = min(Date(), selectedDate.wrappedValue)
     }
     
     var body: some View {
@@ -95,7 +97,7 @@ struct EditCurrentItemView: View {
                     }label: {
                         HStack {
                             Image(systemName: "trash")
-                            Text("Delete")
+                            Text("discard changes")
                         }.accentColor(.red)
                     }
                 }
