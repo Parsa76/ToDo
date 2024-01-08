@@ -206,6 +206,7 @@
 			);
 			path = NewItem;
 			sourceTree = "<group>";
+			usesTabs = 0;
 		};
 		425CDD0E2B3DD90C00C9A0BA /* Views */ = {
 			isa = PBXGroup;
