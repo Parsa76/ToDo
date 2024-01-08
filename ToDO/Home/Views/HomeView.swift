@@ -32,18 +32,39 @@ struct HomeView: View {
         _vm = StateObject(wrappedValue: HomeViewModel(dependencies: dependencies))
     }
     var body: some View {
+        
             ZStack {
                 VStack {
                     List {
-                        Section(header: Text("To do :")) {
+                        Section(header: 
+                        HStack {
+                            Image(systemName: "bookmark.circle.fill")
+                            Text("To do :")
+                        }.fontWeight(.heavy)
+                            .foregroundStyle(Color.blue)
+                            
+                        ) {
                             todoList
+                                
                         }
                         .headerProminence(.increased)
-                        Section(header: Text("Doing items")) {
+                        Section(header: 
+                                    HStack {
+                            Image(systemName: "hourglass.circle")
+                                                    
+                            Text("Doing items")
+                        }.foregroundStyle(Color.yellow)
+                            .fontWeight(.heavy)
+                                    ) {
                             doingList
                         }
                         .headerProminence(.increased)
-                        Section (header: Text("Already done Items:")){
+                        Section (header: HStack {
+                            Image(systemName: "checkmark.circle")
+                            Text("Already done Items:")
+                        }.foregroundStyle(Color.green)
+                            .fontWeight(.heavy)
+                                    ){
                             doneList
                         }
                         .headerProminence(.increased)
@@ -66,23 +87,20 @@ struct HomeView: View {
                     }
                 }
                 .zIndex(2.0)
-
-        }
-
-        
-        .navigationTitle("To Do")
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button(action: {
-                    showCreateNewItemSheet = true
-                }, label: {
-                    Image(systemName: "plus")
-                        .tint(Color.primary)
-                })
-                
             }
+            
+            //.listStyle(.plain)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        showCreateNewItemSheet = true
+                    }, label: {
+                        Image(systemName: "plus")
+                            .tint(Color.primary)
+                    })
+                }
         }
-
+        
     }
 }
 extension HomeView {
@@ -101,34 +119,34 @@ extension HomeView {
                 .onTapGesture {
                     showDetails(item: item)
                 }
-            .swipeActions(edge: .trailing, allowsFullSwipe: true) {
-                Button (role: .destructive) {
-                    vm.delete(item: item)
-                } label: {
-                    Image(systemName: "trash")
+                .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                    Button (role: .destructive) {
+                        vm.delete(item: item)
+                    } label: {
+                        Image(systemName: "trash")
+                    }
+                    Button (role: .cancel) {
+                        updateItemsToEdit(item: item)
+                    } label: {
+                        Text("Edit")
+                    }.tint(.purple)
                 }
-                Button (role: .cancel) {
-                    updateItemsToEdit(item: item)
-                } label: {
-                    Text("Edit")
-                }.tint(.purple)
-            }
-            .swipeActions(edge: .leading, allowsFullSwipe: true) {
-                Button (role: .cancel) {
-                    vm.itemsDataService.updateItem(item: item, title: item.title, color: item.color, icon: item.icon, date: item.timeToDo, description: item.description, loc: item.loc , state: 2)
-                } label: {
-                    Image(systemName: "checkmark.circle")
-                    
+                .swipeActions(edge: .leading, allowsFullSwipe: true) {
+                    Button (role: .cancel) {
+                        vm.itemsDataService.updateItem(item: item, title: item.title, color: item.color, icon: item.icon, date: item.timeToDo, description: item.description, loc: item.loc , state: 2)
+                    } label: {
+                        Image(systemName: "checkmark.circle")
+                        
+                    }
+                    .tint(.green)
+                    Button (role: .cancel) {
+                        vm.moveToTodo(item: item)
+                    } label: {
+                        Image(systemName: "bookmark.circle.fill")
+                        
+                    }
+                    .tint(.blue)
                 }
-                .tint(.green)
-                Button (role: .cancel) {
-                    vm.moveToTodo(item: item)
-                } label: {
-                    Text("to do")
-                    
-                }
-                .tint(.blue)
-            }
         }
     }
     
@@ -138,33 +156,33 @@ extension HomeView {
                 .onTapGesture {
                     showDetails(item: item)
                 }
-            .swipeActions(edge: .trailing, allowsFullSwipe: true) {
-                Button (role: .destructive) {
-                    vm.delete(item: item)
-                } label: {
-                    Image(systemName: "trash")
+                .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                    Button (role: .destructive) {
+                        vm.delete(item: item)
+                    } label: {
+                        Image(systemName: "trash")
+                    }
+                    Button (role: .cancel) {
+                        updateItemsToEdit(item: item)
+                    } label: {
+                        Text("Edit")
+                    }.tint(.purple)
+                    
                 }
-                Button (role: .cancel) {
-                    updateItemsToEdit(item: item)
-                } label: {
-                    Text("Edit")
-                }.tint(.purple)
-
-            }
-            .swipeActions(edge: .leading, allowsFullSwipe: true) {
-                Button (role: .cancel) {
-                    vm.moveToDone(item: item)
-                } label: {
-                    Image(systemName: "checkmark.circle")
+                .swipeActions(edge: .leading, allowsFullSwipe: true) {
+                    Button (role: .cancel) {
+                        vm.moveToDone(item: item)
+                    } label: {
+                        Image(systemName: "checkmark.circle")
                         
-                }.tint(.green)
-                Button (role: .cancel) {
-                    vm.moveToDoing(item: item)
-                } label: {
-                    Image(systemName: "hourglass.circle")
-                }.tint(.yellow)
-                
-            }
+                    }.tint(.green)
+                    Button (role: .cancel) {
+                        vm.moveToDoing(item: item)
+                    } label: {
+                        Image(systemName: "hourglass.circle")
+                    }.tint(.yellow)
+                    
+                }
         }
     }
     private var doneList: some View {
@@ -173,33 +191,33 @@ extension HomeView {
                 .onTapGesture {
                     showDetails(item: item)
                 }
-            .swipeActions(edge: .trailing, allowsFullSwipe: true) {
-                Button (role: .destructive) {
-                    vm.delete(item: item)
-                } label: {
-                    Image(systemName: "trash")
+                .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                    Button (role: .destructive) {
+                        vm.delete(item: item)
+                    } label: {
+                        Image(systemName: "trash")
+                    }
+                    Button (role: .cancel) {
+                        updateItemsToEdit(item: item)
+                    } label: {
+                        Text("Edit")
+                    }.tint(.purple)
                 }
-                Button (role: .cancel) {
-                   updateItemsToEdit(item: item)
-                } label: {
-                    Text("Edit")
-                }.tint(.purple)
-            }
-            .swipeActions(edge: .leading, allowsFullSwipe: true) {
-                Button (role: .cancel) {
-                    vm.moveToTodo(item: item)
-                } label: {
-                    Text("to do")
+                .swipeActions(edge: .leading, allowsFullSwipe: true) {
+                    Button (role: .cancel) {
+                        vm.moveToTodo(item: item)
+                    } label: {
+                        Image(systemName: "bookmark.circle.fill")
                         
-                }.tint(.blue)
-                
-                Button (role: .cancel) {
-                    vm.moveToDoing(item: item)
-                } label: {
-                    Image(systemName: "hourglass.circle")
+                    }.tint(.blue)
+                    
+                    Button (role: .cancel) {
+                        vm.moveToDoing(item: item)
+                    } label: {
+                        Image(systemName: "hourglass.circle")
                         
-                }.tint(.yellow)
-            }
+                    }.tint(.yellow)
+                }
             
         }
     }
