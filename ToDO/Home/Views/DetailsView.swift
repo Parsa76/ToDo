@@ -16,9 +16,12 @@ struct DetailsView: View {
             Button(action: {
                 showDetailsView.toggle()
             }, label: {
+                
                 Image(systemName: "chevron.down")
                     .padding(.top)
-                    .tint(.black)
+                    .tint(.secondary)
+                    .font(.title2)
+                    .fontWeight(.heavy)
                 
             })
             HStack(alignment: .center) {
@@ -48,7 +51,7 @@ struct DetailsView: View {
         }
         .frame(maxWidth: .infinity)
         .background(.ultraThickMaterial)
-        .cornerRadius(30)
+        .cornerRadius(40)
     }
 }
 
