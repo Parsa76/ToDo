@@ -9,21 +9,11 @@ import SwiftUI
 
 struct DetailsView: View {
     let item : ItemModel
-    @Binding var showDetailsView: Bool
+    
  
     var body: some View {
         VStack {
-            Button(action: {
-                showDetailsView.toggle()
-            }, label: {
-                
-                Image(systemName: "chevron.down")
-                    .padding(.top)
-                    .tint(.secondary)
-                    .font(.title2)
-                    .fontWeight(.heavy)
-                
-            })
+
             HStack(alignment: .center) {
                 Text(item.title)
                     .font(.title)
@@ -51,10 +41,10 @@ struct DetailsView: View {
         }
         .frame(maxWidth: .infinity)
         .background(.ultraThickMaterial)
-        .cornerRadius(40)
+        
     }
 }
 
 #Preview {
-    DetailsView(item: DeveloperPreview.instance.item, showDetailsView: .constant(true))
+    DetailsView(item: DeveloperPreview.instance.item)
 }

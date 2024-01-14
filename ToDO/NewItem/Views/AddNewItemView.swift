@@ -122,9 +122,7 @@ extension AddNewItemView {
                     Text("Send me a reminder")
                     })
             }
-
         }
-        
     }
     private var customizedIcon: some View {
         HStack(alignment: .center){
@@ -135,7 +133,6 @@ extension AddNewItemView {
     }
   
     private var colorPickerSection: some View {
-        
         LazyVGrid(columns: columns){
             ForEach(vm.colors.indices) { index in
                 ColorCircleView(color: vm.colors[index], selected: selectedColor == vm.colors[index])

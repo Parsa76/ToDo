@@ -8,11 +8,11 @@
 import Foundation
 import UserNotifications
 import Combine
+
 class NotificationManager {
     
     init() {
         self.requestAuthorization()
-        
     }
     
     func requestAuthorization() {
@@ -44,5 +44,6 @@ class NotificationManager {
         UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [id])
     }
     
+ 
     
 }

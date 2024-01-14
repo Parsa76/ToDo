@@ -23,7 +23,7 @@ struct HomeView: View {
     @State var iconToEdit: String = ""
     @State var colorToEdit: Int16 = 0
     @State var itemToEdit: ItemModel? = nil
-    @State var showDetailsView: Bool = false
+    
     
     
     let dependencies: Dependencies
@@ -75,21 +75,14 @@ struct HomeView: View {
                     .sheet(isPresented: $showEditView, content: {
                         EditCurrentItemView(title: $TitleToEdit, loc: $locToEdit, disc: $descToEdit, selectedDate: $dateToEdit, icon: $iconToEdit, color: $colorToEdit, item: itemToEdit, dependencies: dependencies)
                     })
-                }
-                ZStack {
-                    if showDetailsView {
-                        if let item = itemToShow {
-                            DetailsView(item: item, showDetailsView: $showDetailsView)
-                                .padding(.top, UIScreen.main.bounds.height / 2)
-                                .transition(.move(edge: .bottom))
-                                .animation(.spring())
-                        }
+
+                    .sheet(item: $itemToShow) { item in
+                        DetailsView(item: item)
+                            .presentationDetents([.fraction(0.4)])
+                            .presentationDragIndicator(.visible)
                     }
                 }
-                .zIndex(2.0)
             }
-            
-            //.listStyle(.plain)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
@@ -107,10 +100,8 @@ extension HomeView {
     private func showDetails(item : ItemModel) {
         if (item == itemToShow) {
             itemToShow = nil
-            showDetailsView = false
         } else {
             itemToShow = item
-            showDetailsView = true
         }
     }
     private var doingList: some View {
