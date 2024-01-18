@@ -32,7 +32,6 @@ struct HomeView: View {
         _vm = StateObject(wrappedValue: HomeViewModel(dependencies: dependencies))
     }
     var body: some View {
-        
             ZStack {
                 VStack {
                     List {
@@ -51,7 +50,6 @@ struct HomeView: View {
                         Section(header: 
                                     HStack {
                             Image(systemName: "hourglass.circle")
-                                                    
                             Text("Doing items")
                         }.foregroundStyle(Color.yellow)
                             .fontWeight(.heavy)
@@ -124,7 +122,7 @@ extension HomeView {
                 }
                 .swipeActions(edge: .leading, allowsFullSwipe: true) {
                     Button (role: .cancel) {
-                        vm.itemsDataService.updateItem(item: item, title: item.title, color: item.color, icon: item.icon, date: item.timeToDo, description: item.description, loc: item.loc , state: 2)
+                        vm.moveToDone(item: item)
                     } label: {
                         Image(systemName: "checkmark.circle")
                         

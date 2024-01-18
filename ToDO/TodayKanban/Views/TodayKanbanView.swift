@@ -11,7 +11,9 @@ struct TodayKanbanView: View {
     
     
     @StateObject var vm : TodayKanbanViewModel
-    
+    @State private var isTodoTargeted = false
+    @State private var isDoingTargeted = false
+    @State private var isDoneTargeted = false
     init(dependencies: Dependencies) {
         _vm = StateObject(wrappedValue: TodayKanbanViewModel(dependencies: dependencies))
     }
@@ -27,7 +29,7 @@ struct TodayKanbanView: View {
                     HStack (alignment : .top){
                         ZStack(alignment: .top) {
                             Rectangle()
-                                .fill(Color.theme.background)
+                                .fill(isTodoTargeted ? Color.gray.opacity(0.5): Color.theme.background)
                                 .frame(width: width ,  height: UIScreen.main.bounds.height ,alignment: .top )
                                 .background(Color.clear)
                             VStack {
@@ -38,10 +40,12 @@ struct TodayKanbanView: View {
                         .dropDestination(for: ItemModel.self) { items, location in
                             vm.moveToTodo(items: items)
                             return true
+                        } isTargeted: { isTargeted in
+                            isTodoTargeted = isTargeted
                         }
                         ZStack(alignment: .top) {
                             Rectangle()
-                                .fill(Color.theme.background)
+                                .fill(isDoingTargeted ? Color.gray.opacity(0.5): Color.theme.background)
                                 .frame(width: width ,  height: UIScreen.main.bounds.height ,alignment: .top )
                                 .background(Color.clear)
                             VStack {
@@ -52,12 +56,14 @@ struct TodayKanbanView: View {
                         .dropDestination(for: ItemModel.self) { items, location in
                             vm.moveToDoing(items: items)
                             return true
+                        }   isTargeted: { isTargeted in
+                                isDoingTargeted = isTargeted
                         }
                         ZStack(alignment: .top) {
                             Rectangle()
-                                .fill(Color.theme.background)
+                                .fill(isDoneTargeted ? Color.gray.opacity(0.5): Color.theme.background)
                                 .frame(width: width ,  height: UIScreen.main.bounds.height ,alignment: .top )
-                                .background(Color.black)
+                                .background(Color.clear)
                             VStack {
                                 KanbanColumnsHeadBox(color: .green, title: "Done")
                                 KanbonColumnView(items: vm.doneITems)
@@ -66,7 +72,9 @@ struct TodayKanbanView: View {
                         .dropDestination(for: ItemModel.self) { items, location in
                             vm.moveToDone(items: items)
                             return true
-                        }
+                        } isTargeted: { isTargeted in
+                            isDoneTargeted = isTargeted
+                   }
                         
                     }
                 }

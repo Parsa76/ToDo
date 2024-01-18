@@ -9,8 +9,8 @@ import SwiftUI
 
 struct KanbonColumnView: View {
     let width = UIScreen.main.bounds.width / 3
-    
     var items: [ItemModel]
+    
     var body: some View {
         VStack(spacing: 6) {
             ForEach(items) { item in
@@ -18,7 +18,7 @@ struct KanbonColumnView: View {
                     .draggable(item)
                 }
             }
-        .frame(width: width )
+        .frame(width: width)
     }
     
 }
