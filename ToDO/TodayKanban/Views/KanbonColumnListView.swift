@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct KanbonColumnView: View {
+struct KanbonColumnListView: View {
     let width = UIScreen.main.bounds.width / 3
     var items: [ItemModel]
     
@@ -24,5 +24,5 @@ struct KanbonColumnView: View {
 }
 
 #Preview {
-    KanbonColumnView(items: [])
+    KanbonColumnListView(items: [])
 }
