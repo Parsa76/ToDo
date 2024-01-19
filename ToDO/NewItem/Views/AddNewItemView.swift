@@ -12,7 +12,7 @@ struct AddNewItemView: View {
     @StateObject var vm : AddNewItemViewModel
     @State var titleTextField:String = ""
     @State var locTextField:String = ""
-    @State var disciptionTextField: String = ""
+    @State var desciptionTextField: String = ""
     @State var selectedDate: Date = Date()
     @State var selectedColor: Color = .red
     @State var selectedSymbol: String = "curlybraces.square.fill"
@@ -36,25 +36,25 @@ struct AddNewItemView: View {
             VStack(alignment: .center) {
                 List {
                     Section {
-                        titleSection
+                        TitleTextField(text: $titleTextField)
                     }
                     Section {
-                        locSection
+                        LocationTextField(textFieldText: $locTextField)
                     }
                     Section {
-                        datePickerSection
+                        DateSelector(startigDate: StartigDate, endingDate: endingDate, selectedDate: $selectedDate, sendNotification: $sendNotification)
                     }
-                    Section(header: Text("Discription")) {
-                        descriptionSection
+                    Section(header: Text("Description")) {
+                        DescriptionTextField(desciptionTextField: $desciptionTextField)
                     }
                     Section {
                         customizedIcon
                     }
                     Section(header: Text("Pick a color")) {
-                        colorPickerSection
+                        ColorSelector(selectedColor: $selectedColor)
                     }
                     Section(header: Text("Pick an icon")) {
-                        pcikSymbolSection
+                        SymbolSelector(selectedSymbol: $selectedSymbol)
                     }
                 }
                 .listStyle(.sidebar)
@@ -64,7 +64,7 @@ struct AddNewItemView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
                         let id = UUID().uuidString
-                        vm.saveToCoreData(id: id , title: titleTextField, timeToDo: selectedDate, color: selectedColor.codeAsInt(), icon: selectedSymbol, loc: locTextField, description: disciptionTextField, state: 0 , notification: sendNotification)
+                        vm.saveToCoreData(id: id , title: titleTextField, timeToDo: selectedDate, color: selectedColor.codeAsInt(), icon: selectedSymbol, loc: locTextField, description: desciptionTextField, state: 0 , notification: sendNotification)
                         
                         presentationMode.wrappedValue.dismiss()
                     }label: {
@@ -91,65 +91,12 @@ struct AddNewItemView: View {
     }
 }
 extension AddNewItemView {
-    private var titleSection: some View {
-        HStack {
-            Text("Title : ")
-            TextField("what are you going to do ?", text: $titleTextField)
-                .textFieldStyle(.automatic)
-        }
-    }
-    private var locSection: some View {
-        HStack {
-            Text("location : ")
-            TextField("where ?", text: $locTextField)
-                .textFieldStyle(.automatic)
-        }
-    }
-    private var descriptionSection: some View {
-        HStack {
-            TextField("Describe it in some Details...", text: $disciptionTextField , axis: .vertical)
-                .lineLimit(4...6)
-        }
-    }
-    private var datePickerSection: some View {
-        VStack (alignment: .center){
-            DatePicker("Select a Date", selection: $selectedDate, in: StartigDate...endingDate)
-                .datePickerStyle(.compact)
-            HStack {
-                Toggle(
-                    isOn: $sendNotification,
-                    label: {
-                    Text("Send me a reminder")
-                    })
-            }
-        }
-    }
+
     private var customizedIcon: some View {
         HStack(alignment: .center){
             Spacer()
             IconView(color: selectedColor, symbol: selectedSymbol)
             Spacer()
-        }
-    }
-  
-    private var colorPickerSection: some View {
-        LazyVGrid(columns: columns){
-            ForEach(vm.colors.indices) { index in
-                ColorCircleView(color: vm.colors[index], selected: selectedColor == vm.colors[index])
-                    .onTapGesture {
-                        selectedColor = vm.colors[index]
-                    }
-            }
-        }
-    }
-    private var pcikSymbolSection: some View {
-        LazyVGrid(columns: columns) {
-            ForEach(vm.symbol.indices) { icon in
-                SymbolView(symbol: vm.symbol[icon], selected: selectedSymbol == vm.symbol[icon])
-                    .onTapGesture {
-                        selectedSymbol = vm.symbol[icon]
-                    }
-            }
         }
     }
     

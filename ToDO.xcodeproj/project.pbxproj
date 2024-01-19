@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		422555AB2B59F5290074F5E9 /* KanbanColumns.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422555AA2B59F5290074F5E9 /* KanbanColumns.swift */; };
+		422555AE2B5A749D0074F5E9 /* ColorSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422555AD2B5A749D0074F5E9 /* ColorSelector.swift */; };
+		422555B02B5A79EC0074F5E9 /* SymbolSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422555AF2B5A79EC0074F5E9 /* SymbolSelector.swift */; };
+		422555B22B5A7E8A0074F5E9 /* TitleTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422555B12B5A7E8A0074F5E9 /* TitleTextField.swift */; };
+		422555B42B5A80320074F5E9 /* LocationTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422555B32B5A80320074F5E9 /* LocationTextField.swift */; };
+		422555B62B5A81100074F5E9 /* DescriptionTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422555B52B5A81100074F5E9 /* DescriptionTextField.swift */; };
+		422555B82B5A88DF0074F5E9 /* DateSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422555B72B5A88DF0074F5E9 /* DateSelector.swift */; };
 		425CDCE52B3C8DAE00C9A0BA /* ToDOApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425CDCE42B3C8DAE00C9A0BA /* ToDOApp.swift */; };
 		425CDCE92B3C8DAF00C9A0BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 425CDCE82B3C8DAF00C9A0BA /* Assets.xcassets */; };
 		425CDCEC2B3C8DAF00C9A0BA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 425CDCEB2B3C8DAF00C9A0BA /* Preview Assets.xcassets */; };
@@ -44,6 +50,12 @@
 
 /* Begin PBXFileReference section */
 		422555AA2B59F5290074F5E9 /* KanbanColumns.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KanbanColumns.swift; sourceTree = "<group>"; };
+		422555AD2B5A749D0074F5E9 /* ColorSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSelector.swift; sourceTree = "<group>"; };
+		422555AF2B5A79EC0074F5E9 /* SymbolSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolSelector.swift; sourceTree = "<group>"; };
+		422555B12B5A7E8A0074F5E9 /* TitleTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTextField.swift; sourceTree = "<group>"; };
+		422555B32B5A80320074F5E9 /* LocationTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTextField.swift; sourceTree = "<group>"; };
+		422555B52B5A81100074F5E9 /* DescriptionTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionTextField.swift; sourceTree = "<group>"; };
+		422555B72B5A88DF0074F5E9 /* DateSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSelector.swift; sourceTree = "<group>"; };
 		425CDCE12B3C8DAE00C9A0BA /* ToDO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		425CDCE42B3C8DAE00C9A0BA /* ToDOApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDOApp.swift; sourceTree = "<group>"; };
 		425CDCE82B3C8DAF00C9A0BA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -92,6 +104,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		422555AC2B5A73F40074F5E9 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				422555B92B5A8AA60074F5E9 /* Textfields */,
+				422555BA2B5A8AE60074F5E9 /* Selectors */,
+				422555BB2B5A8B080074F5E9 /* Helpers */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		422555B92B5A8AA60074F5E9 /* Textfields */ = {
+			isa = PBXGroup;
+			children = (
+				422555B12B5A7E8A0074F5E9 /* TitleTextField.swift */,
+				422555B32B5A80320074F5E9 /* LocationTextField.swift */,
+				422555B52B5A81100074F5E9 /* DescriptionTextField.swift */,
+			);
+			path = Textfields;
+			sourceTree = "<group>";
+		};
+		422555BA2B5A8AE60074F5E9 /* Selectors */ = {
+			isa = PBXGroup;
+			children = (
+				422555AD2B5A749D0074F5E9 /* ColorSelector.swift */,
+				422555B72B5A88DF0074F5E9 /* DateSelector.swift */,
+				422555AF2B5A79EC0074F5E9 /* SymbolSelector.swift */,
+			);
+			path = Selectors;
+			sourceTree = "<group>";
+		};
+		422555BB2B5A8B080074F5E9 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				4276A6D22B3E296D0032BA86 /* IconView.swift */,
+				42FB07362B3E17A700D755A6 /* SymbolView.swift */,
+				42950DAE2B3E0DEB0034C63A /* ColorCircleView.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		425CDCD82B3C8DAE00C9A0BA = {
 			isa = PBXGroup;
 			children = (
@@ -218,9 +270,7 @@
 			children = (
 				425CDD102B3DDA8C00C9A0BA /* AddNewItemView.swift */,
 				42FDCD5D2B47494D008A7730 /* EditCurrentItemView.swift */,
-				42950DAE2B3E0DEB0034C63A /* ColorCircleView.swift */,
-				42FB07362B3E17A700D755A6 /* SymbolView.swift */,
-				4276A6D22B3E296D0032BA86 /* IconView.swift */,
+				422555AC2B5A73F40074F5E9 /* Components */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -338,12 +388,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				422555B42B5A80320074F5E9 /* LocationTextField.swift in Sources */,
 				42EC53392B4335890044A9CD /* Date.swift in Sources */,
 				42D321DD2B417CDB00248069 /* IconRowView.swift in Sources */,
 				42D321E82B41F89C00248069 /* TodayKanbanViewModel.swift in Sources */,
 				42FDCD592B467677008A7730 /* KanbonColumnListView.swift in Sources */,
+				422555B22B5A7E8A0074F5E9 /* TitleTextField.swift in Sources */,
 				42FB07372B3E17A700D755A6 /* SymbolView.swift in Sources */,
+				422555AE2B5A749D0074F5E9 /* ColorSelector.swift in Sources */,
+				422555B82B5A88DF0074F5E9 /* DateSelector.swift in Sources */,
+				422555B02B5A79EC0074F5E9 /* SymbolSelector.swift in Sources */,
 				425CDCFD2B3C92D100C9A0BA /* ItemModel.swift in Sources */,
+				422555B62B5A81100074F5E9 /* DescriptionTextField.swift in Sources */,
 				42EC534A2B4579160044A9CD /* UTType.swift in Sources */,
 				42FDCD5E2B47494D008A7730 /* EditCurrentItemView.swift in Sources */,
 				42950DAF2B3E0DEB0034C63A /* ColorCircleView.swift in Sources */,

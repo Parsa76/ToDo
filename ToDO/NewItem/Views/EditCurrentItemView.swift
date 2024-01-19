@@ -18,6 +18,7 @@ struct EditCurrentItemView: View {
     @Binding var selectedDate: Date
     @Binding var color: Int16
     @Binding var icon: String
+    
     var item : ItemModel?
     
     let StartigDate: Date
@@ -42,6 +43,7 @@ struct EditCurrentItemView: View {
         self._icon = icon
         self._color = color
         self.item = item
+        
         _vm = StateObject(wrappedValue: EditItemViewModel(dependencies: dependencies))
         
         StartigDate = min(Date(), selectedDate.wrappedValue)
@@ -52,16 +54,16 @@ struct EditCurrentItemView: View {
             VStack(alignment: .center) {
                 List {
                     Section {
-                        titleSection
+                        TitleTextField(text: $title)
                     }
                     Section {
-                        locSection
+                        LocationTextField(textFieldText: $loc)
                     }
                     Section {
-                        datePickerSection
+                        DateSelector(startigDate: StartigDate, endingDate: endingDate, selectedDate: $selectedDate, sendNotification: $sendNotification)
                     }
-                    Section(header: Text("Discription")) {
-                        descriptionSection
+                    Section(header: Text("Description")) {
+                        DescriptionTextField(desciptionTextField: $disc)
                     }
                     Section {
                         customizedIcon
@@ -70,7 +72,8 @@ struct EditCurrentItemView: View {
                         colorPickerSection
                     }
                     Section(header: Text("Pick an icon")) {
-                        pcikSymbolSection
+                        SymbolSelector(selectedSymbol: $icon)
+                        
                     }
                 }
                 .listStyle(.sidebar)
@@ -106,41 +109,6 @@ struct EditCurrentItemView: View {
     }
 }
 extension EditCurrentItemView {
-    private var titleSection: some View {
-        HStack {
-            Text("Title : ")
-            TextField("what are you going to do ?", text: $title)
-                .textFieldStyle(.automatic)
-        }
-    }
-    private var locSection: some View {
-        HStack {
-            Text("location : ")
-            TextField("where ?", text: $loc)
-                .textFieldStyle(.automatic)
-        }
-    }
-    private var descriptionSection: some View {
-        HStack {
-            TextField("Describe it in some Details...", text: $disc , axis: .vertical)
-                .lineLimit(4...6)
-        }
-    }
-    private var datePickerSection: some View {
-        VStack (alignment: .center){
-            DatePicker("Select a Date", selection: $selectedDate, in: StartigDate...endingDate)
-                .datePickerStyle(.compact)
-            HStack {
-                Toggle(
-                    isOn: $sendNotification,
-                    label: {
-                    Text("Send me a reminder")
-                    })
-            }
-
-        }
-        
-    }
     private var customizedIcon: some View {
         HStack(alignment: .center){
             Spacer()
@@ -161,16 +129,7 @@ extension EditCurrentItemView {
             }
         }
     }
-    private var pcikSymbolSection: some View {
-        LazyVGrid(columns: columns) {
-            ForEach(vm.symbol.indices) { index in
-                SymbolView(symbol: vm.symbol[index], selected: icon == vm.symbol[index])
-                    .onTapGesture {
-                        icon = vm.symbol[index]
-                    }
-            }
-        }
-    }
+
 }
 
 #Preview {
