@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		422555AB2B59F5290074F5E9 /* KanbanColumns.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422555AA2B59F5290074F5E9 /* KanbanColumns.swift */; };
 		425CDCE52B3C8DAE00C9A0BA /* ToDOApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425CDCE42B3C8DAE00C9A0BA /* ToDOApp.swift */; };
 		425CDCE92B3C8DAF00C9A0BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 425CDCE82B3C8DAF00C9A0BA /* Assets.xcassets */; };
 		425CDCEC2B3C8DAF00C9A0BA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 425CDCEB2B3C8DAF00C9A0BA /* Preview Assets.xcassets */; };
@@ -35,13 +36,14 @@
 		42EC533E2B44A48D0044A9CD /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EC533D2B44A48D0044A9CD /* NotificationManager.swift */; };
 		42EC534A2B4579160044A9CD /* UTType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EC53492B4579160044A9CD /* UTType.swift */; };
 		42FB07372B3E17A700D755A6 /* SymbolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FB07362B3E17A700D755A6 /* SymbolView.swift */; };
-		42FDCD592B467677008A7730 /* KanbonColumnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FDCD582B467677008A7730 /* KanbonColumnView.swift */; };
+		42FDCD592B467677008A7730 /* KanbonColumnListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FDCD582B467677008A7730 /* KanbonColumnListView.swift */; };
 		42FDCD5C2B4741DB008A7730 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FDCD5B2B4741DB008A7730 /* HapticManager.swift */; };
 		42FDCD5E2B47494D008A7730 /* EditCurrentItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FDCD5D2B47494D008A7730 /* EditCurrentItemView.swift */; };
 		42FDCD602B4A94F6008A7730 /* EditItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FDCD5F2B4A94F6008A7730 /* EditItemViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		422555AA2B59F5290074F5E9 /* KanbanColumns.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KanbanColumns.swift; sourceTree = "<group>"; };
 		425CDCE12B3C8DAE00C9A0BA /* ToDO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		425CDCE42B3C8DAE00C9A0BA /* ToDOApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDOApp.swift; sourceTree = "<group>"; };
 		425CDCE82B3C8DAF00C9A0BA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -73,7 +75,7 @@
 		42EC53462B4575990044A9CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		42EC53492B4579160044A9CD /* UTType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UTType.swift; sourceTree = "<group>"; };
 		42FB07362B3E17A700D755A6 /* SymbolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolView.swift; sourceTree = "<group>"; };
-		42FDCD582B467677008A7730 /* KanbonColumnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KanbonColumnView.swift; sourceTree = "<group>"; };
+		42FDCD582B467677008A7730 /* KanbonColumnListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KanbonColumnListView.swift; sourceTree = "<group>"; };
 		42FDCD5B2B4741DB008A7730 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 		42FDCD5D2B47494D008A7730 /* EditCurrentItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCurrentItemView.swift; sourceTree = "<group>"; };
 		42FDCD5F2B4A94F6008A7730 /* EditItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditItemViewModel.swift; sourceTree = "<group>"; };
@@ -247,7 +249,8 @@
 				42D321E52B41F72F00248069 /* TodayKanbanView.swift */,
 				42EC53362B4333760044A9CD /* KanbanBoxView.swift */,
 				42EC533A2B441C450044A9CD /* KanbanColumnsHeadBox.swift */,
-				42FDCD582B467677008A7730 /* KanbonColumnView.swift */,
+				42FDCD582B467677008A7730 /* KanbonColumnListView.swift */,
+				422555AA2B59F5290074F5E9 /* KanbanColumns.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -338,7 +341,7 @@
 				42EC53392B4335890044A9CD /* Date.swift in Sources */,
 				42D321DD2B417CDB00248069 /* IconRowView.swift in Sources */,
 				42D321E82B41F89C00248069 /* TodayKanbanViewModel.swift in Sources */,
-				42FDCD592B467677008A7730 /* KanbonColumnView.swift in Sources */,
+				42FDCD592B467677008A7730 /* KanbonColumnListView.swift in Sources */,
 				42FB07372B3E17A700D755A6 /* SymbolView.swift in Sources */,
 				425CDCFD2B3C92D100C9A0BA /* ItemModel.swift in Sources */,
 				42EC534A2B4579160044A9CD /* UTType.swift in Sources */,
@@ -351,6 +354,7 @@
 				425CDCF82B3C8EC800C9A0BA /* ItemContainer.xcdatamodeld in Sources */,
 				425CDD0C2B3CB36C00C9A0BA /* Dependencies.swift in Sources */,
 				42D321DB2B40937E00248069 /* Int16.swift in Sources */,
+				422555AB2B59F5290074F5E9 /* KanbanColumns.swift in Sources */,
 				425CDD112B3DDA8C00C9A0BA /* AddNewItemView.swift in Sources */,
 				42FDCD5C2B4741DB008A7730 /* HapticManager.swift in Sources */,
 				42D321E12B41A97A00248069 /* DetailsView.swift in Sources */,
