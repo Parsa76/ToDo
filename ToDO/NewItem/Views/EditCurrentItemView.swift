@@ -16,10 +16,10 @@ struct EditCurrentItemView: View {
     @Binding var loc: String
     @Binding var disc: String
     @Binding var selectedDate: Date
-    @Binding var color: Int16
+    @Binding var color: Color
     @Binding var icon: String
     
-    var item : ItemModel?
+    var item : ItemModel
     
     let StartigDate: Date
     let endingDate: Date = Calendar.current.date(from: DateComponents(year: 2080)) ?? Date()
@@ -35,16 +35,15 @@ struct EditCurrentItemView: View {
         GridItem()
     ]
     
-    init(title: Binding<String> ,loc: Binding<String> , disc: Binding<String> , selectedDate: Binding<Date> , icon: Binding<String> , color: Binding<Int16> , item: ItemModel? , dependencies: Dependencies) {
+    init(title: Binding<String> ,loc: Binding<String> , disc: Binding<String> , selectedDate: Binding<Date> , icon: Binding<String> , color: Binding<Color> , item: ItemModel , dependencies: Dependencies) {
+        _vm = StateObject(wrappedValue: EditItemViewModel(dependencies: dependencies))
+        self.item = item
         self._title = title
         self._loc = loc
         self._disc = disc
         self._selectedDate = selectedDate
         self._icon = icon
         self._color = color
-        self.item = item
-        
-        _vm = StateObject(wrappedValue: EditItemViewModel(dependencies: dependencies))
         
         StartigDate = min(Date(), selectedDate.wrappedValue)
     }
@@ -69,7 +68,7 @@ struct EditCurrentItemView: View {
                         customizedIcon
                     }
                     Section(header: Text("Pick a color")) {
-                        colorPickerSection
+                        ColorSelector(selectedColor: $color)
                     }
                     Section(header: Text("Pick an icon")) {
                         SymbolSelector(selectedSymbol: $icon)
@@ -82,7 +81,7 @@ struct EditCurrentItemView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        vm.updateItem(item: item, title: title, loc: loc, description: disc, selectedDate: selectedDate, color: color, icon: icon, remeinder: sendNotification)
+                        vm.updateItem(item: item, title: title, loc: loc, description: disc, selectedDate: selectedDate, color: color.codeAsInt(), icon: icon, remeinder: sendNotification)
                         
                         presentationMode.wrappedValue.dismiss()
                     }label: {
@@ -112,26 +111,13 @@ extension EditCurrentItemView {
     private var customizedIcon: some View {
         HStack(alignment: .center){
             Spacer()
-            IconView(color: color.decodeAsColor(), symbol: icon)
+            IconView(color: color, symbol: icon)
             Spacer()
-        }
-    }
-  
-    private var colorPickerSection: some View {
-        
-        LazyVGrid(columns: columns){
-            ForEach(vm.colors.indices) { index in
-                ColorCircleView(color: vm.colors[index], selected: color.decodeAsColor() == vm.colors[index])
-                    .onTapGesture {
-                        color = vm.colors[index].codeAsInt()
-                        
-                    }
-            }
         }
     }
 
 }
 
 #Preview {
-    EditCurrentItemView(title: .constant(""), loc: .constant(""), disc: .constant(""), selectedDate: .constant(Date()), icon: .constant(""), color: .constant(0), item: DeveloperPreview.instance.item , dependencies: Dependencies())
+    EditCurrentItemView(title: .constant(""), loc: .constant(""), disc: .constant(""), selectedDate: .constant(Date()), icon: .constant(""), color: .constant(.red), item: DeveloperPreview.instance.item , dependencies: Dependencies())
 }

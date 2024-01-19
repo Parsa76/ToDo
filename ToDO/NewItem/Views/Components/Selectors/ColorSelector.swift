@@ -28,12 +28,10 @@ struct ColorSelector: View {
                     }
             }
         }
-
     }
 }
 
 #Preview {
-    
     ColorSelector(selectedColor: .constant(.red))
     
 }

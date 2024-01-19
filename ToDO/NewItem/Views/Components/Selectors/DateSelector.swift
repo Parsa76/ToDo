@@ -29,5 +29,6 @@ struct DateSelector: View {
 #Preview {
     let startigDate: Date = Date()
     let endingDate: Date = Calendar.current.date(from: DateComponents(year: 2080)) ?? Date()
+    
     return DateSelector(startigDate: startigDate, endingDate: endingDate, selectedDate: .constant(Date()), sendNotification: .constant(false))
 }

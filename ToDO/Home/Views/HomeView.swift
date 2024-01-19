@@ -9,22 +9,19 @@ import SwiftUI
 
 struct HomeView: View {
     @StateObject private var vm : HomeViewModel
-    @State var showCreateNewItemSheet: Bool = false
-    @State var showEditView: Bool = false
     
+    @State var showCreateNewItemSheet: Bool = false
     @State var itemToShow: ItemModel? = nil
     
     
     //Edit items
+    @State var itemToEdit: ItemModel? = nil
     @State var TitleToEdit: String = ""
     @State var locToEdit: String = ""
     @State var descToEdit: String = ""
     @State var dateToEdit: Date = Date()
     @State var iconToEdit: String = ""
-    @State var colorToEdit: Int16 = 0
-    @State var itemToEdit: ItemModel? = nil
-    
-    
+    @State var colorToEdit: Color = .red
     
     let dependencies: Dependencies
     init(dependencies: Dependencies) {
@@ -70,10 +67,10 @@ struct HomeView: View {
                     .sheet(isPresented: $showCreateNewItemSheet, content: {
                         AddNewItemView(dependencies: dependencies)
                     })
-                    .sheet(isPresented: $showEditView, content: {
-                        EditCurrentItemView(title: $TitleToEdit, loc: $locToEdit, disc: $descToEdit, selectedDate: $dateToEdit, icon: $iconToEdit, color: $colorToEdit, item: itemToEdit, dependencies: dependencies)
-                    })
-
+                    .sheet(item: $itemToEdit){ item in
+                    
+                        EditCurrentItemView(title: $TitleToEdit, loc: $locToEdit, disc: $descToEdit, selectedDate: $dateToEdit, icon: $iconToEdit, color: $colorToEdit, item: item, dependencies: dependencies)
+                    }
                     .sheet(item: $itemToShow) { item in
                         DetailsView(item: item)
                             .presentationDetents([.fraction(0.4)])
@@ -216,9 +213,8 @@ extension HomeView {
         locToEdit = item.loc
         descToEdit = item.description
         iconToEdit = item.icon
-        colorToEdit = item.color
+        colorToEdit = item.color.decodeAsColor()
         dateToEdit = item.timeToDo
-        showEditView.toggle()
     }
 }
 
