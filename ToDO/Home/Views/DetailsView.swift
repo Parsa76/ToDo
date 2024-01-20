@@ -12,36 +12,15 @@ struct DetailsView: View {
     
  
     var body: some View {
-        VStack {
-
             HStack(alignment: .center) {
-                Text(item.title)
-                    .font(.title)
-                    .fontWeight(.semibold)
-                    .padding()
-                Spacer()
-                IconView(color: item.color.decodeAsColor(), symbol: item.icon)
-                
-            }
-            .padding()
-            Divider()
-            VStack (alignment: .leading, spacing: 8) {
                 Text(item.description)
                     .font(.subheadline)
                     .foregroundColor(.secondary)
-               
+                Spacer()
+                IconRowView(color: item.color.decodeAsColor(), symbol: item.icon)
+                
             }
             
-            VStack (alignment: .leading){
-                Text(item.timeToDo.asMediumDateString())
-            }
-            
-            Spacer()
-            Spacer()
-        }
-        .frame(maxWidth: .infinity)
-        .background(.ultraThickMaterial)
-        
     }
 }
 

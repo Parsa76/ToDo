@@ -8,29 +8,22 @@
 import SwiftUI
 
 struct AddNewItemView: View {
+    
     @Environment(\.presentationMode) var presentationMode
-    @StateObject var vm : AddNewItemViewModel
+    @EnvironmentObject var vm : CreateAndEditViewModel
+    
     @State var titleTextField:String = ""
     @State var locTextField:String = ""
     @State var desciptionTextField: String = ""
-    @State var selectedDate: Date = Date()
     @State var selectedColor: Color = .red
     @State var selectedSymbol: String = "curlybraces.square.fill"
     @State var sendNotification:Bool = false
+    @State var selectedDate: Date = Date()
+    
     let StartigDate: Date = Date()
     let endingDate: Date = Calendar.current.date(from: DateComponents(year: 2080)) ?? Date()
     
-    let columns : [GridItem] = [
-        GridItem(),
-        GridItem(),
-        GridItem(),
-        GridItem(),
-        GridItem()
-    ]
-    
-    init(dependencies : Dependencies) {
-        _vm = StateObject(wrappedValue: AddNewItemViewModel(dependencies: dependencies))
-    }
+
     var body: some View {
         NavigationView {
             VStack(alignment: .center) {
@@ -58,33 +51,13 @@ struct AddNewItemView: View {
                     }
                 }
                 .listStyle(.sidebar)
-                
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        let id = UUID().uuidString
-                        vm.saveToCoreData(id: id , title: titleTextField, timeToDo: selectedDate, color: selectedColor.codeAsInt(), icon: selectedSymbol, loc: locTextField, description: desciptionTextField, state: 0 , notification: sendNotification)
-                        
-                        presentationMode.wrappedValue.dismiss()
-                    }label: {
-                        HStack {
-                            Image(systemName: "square.and.arrow.down")
-                            Text("Save")
-                        }
-                        .accentColor(.green)
-                        .disabled(titleTextField.count < 3)
-                    }
+                    saveButton
                 }
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button {
-                        presentationMode.wrappedValue.dismiss()
-                    }label: {
-                        HStack {
-                            Image(systemName: "trash")
-                            Text("Delete")
-                        }.accentColor(.red)
-                    }
+                    deleteButton
                 }
             }
         }
@@ -99,9 +72,35 @@ extension AddNewItemView {
             Spacer()
         }
     }
+    private var saveButton: some View {
+        Button {
+            let id = UUID().uuidString
+            vm.CreateAndSave(id: id , title: titleTextField, timeToDo: selectedDate, color: selectedColor.codeAsInt(), icon: selectedSymbol, loc: locTextField, description: desciptionTextField, state: 0 , notification: sendNotification)
+            
+            presentationMode.wrappedValue.dismiss()
+        }label: {
+            HStack {
+                Image(systemName: "square.and.arrow.down")
+                Text("Save")
+            }
+            .accentColor(.green)
+            .disabled(titleTextField.count < 3)
+        }
+    }
+    private var deleteButton: some View {
+        Button {
+            presentationMode.wrappedValue.dismiss()
+        }label: {
+            HStack {
+                Image(systemName: "trash")
+                Text("Delete")
+            }.accentColor(.red)
+        }
+    }
     
 }
 
 #Preview {
-    AddNewItemView(dependencies: Dependencies())
+    AddNewItemView()
+        .environmentObject(CreateAndEditViewModel(dependencies: Dependencies()))
 }

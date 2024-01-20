@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct EditCurrentItemView: View {
-    @StateObject var vm : EditItemViewModel
+    @EnvironmentObject var vm : CreateAndEditViewModel
     @Environment(\.presentationMode) var presentationMode
     
     
@@ -25,18 +25,8 @@ struct EditCurrentItemView: View {
     let endingDate: Date = Calendar.current.date(from: DateComponents(year: 2080)) ?? Date()
     @State var sendNotification : Bool = true
     
-
-    
-    let columns : [GridItem] = [
-        GridItem(),
-        GridItem(),
-        GridItem(),
-        GridItem(),
-        GridItem()
-    ]
-    
-    init(title: Binding<String> ,loc: Binding<String> , disc: Binding<String> , selectedDate: Binding<Date> , icon: Binding<String> , color: Binding<Color> , item: ItemModel , dependencies: Dependencies) {
-        _vm = StateObject(wrappedValue: EditItemViewModel(dependencies: dependencies))
+    init(title: Binding<String> ,loc: Binding<String> , disc: Binding<String> , selectedDate: Binding<Date> , icon: Binding<String> , color: Binding<Color> , item: ItemModel) {
+        
         self.item = item
         self._title = title
         self._loc = loc
@@ -80,28 +70,10 @@ struct EditCurrentItemView: View {
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        vm.updateItem(item: item, title: title, loc: loc, description: disc, selectedDate: selectedDate, color: color.codeAsInt(), icon: icon, remeinder: sendNotification)
-                        
-                        presentationMode.wrappedValue.dismiss()
-                    }label: {
-                        HStack {
-                            Image(systemName: "square.and.arrow.down")
-                            Text("Save")
-                        }
-                        .accentColor(.green)
-                        .disabled(title.count < 3)
-                    }
+                    saveButton
                 }
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button {
-                        presentationMode.wrappedValue.dismiss()
-                    }label: {
-                        HStack {
-                            Image(systemName: "trash")
-                            Text("discard changes")
-                        }.accentColor(.red)
-                    }
+                    cancelButton
                 }
             }
         }
@@ -115,9 +87,35 @@ extension EditCurrentItemView {
             Spacer()
         }
     }
+    private var saveButton: some View {
+        Button {
+            vm.updateItem(item: item, title: title, loc: loc, description: disc, selectedDate: selectedDate, color: color.codeAsInt(), icon: icon, remeinder: sendNotification)
+            
+            presentationMode.wrappedValue.dismiss()
+        }label: {
+            HStack {
+                Image(systemName: "square.and.arrow.down")
+                Text("Save")
+            }
+            .accentColor(.green)
+            .disabled(title.count < 3)
+        }
+        
+    }
+    private var cancelButton: some View {
+        Button {
+            presentationMode.wrappedValue.dismiss()
+        }label: {
+            HStack {
+                Image(systemName: "trash")
+                Text("discard changes")
+            }.accentColor(.red)
+        }
+    }
 
 }
 
 #Preview {
-    EditCurrentItemView(title: .constant(""), loc: .constant(""), disc: .constant(""), selectedDate: .constant(Date()), icon: .constant(""), color: .constant(.red), item: DeveloperPreview.instance.item , dependencies: Dependencies())
+    EditCurrentItemView(title: .constant(""), loc: .constant(""), disc: .constant(""), selectedDate: .constant(Date()), icon: .constant(""), color: .constant(.red), item: DeveloperPreview.instance.item)
+        .environmentObject(CreateAndEditViewModel(dependencies: Dependencies()))
 }

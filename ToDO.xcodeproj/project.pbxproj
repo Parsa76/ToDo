@@ -25,7 +25,6 @@
 		425CDD092B3CB1F500C9A0BA /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425CDD082B3CB1F400C9A0BA /* HomeViewModel.swift */; };
 		425CDD0C2B3CB36C00C9A0BA /* Dependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425CDD0B2B3CB36C00C9A0BA /* Dependencies.swift */; };
 		425CDD112B3DDA8C00C9A0BA /* AddNewItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425CDD102B3DDA8C00C9A0BA /* AddNewItemView.swift */; };
-		425CDD142B3DDAE700C9A0BA /* AddNewItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425CDD132B3DDAE700C9A0BA /* AddNewItemViewModel.swift */; };
 		4276A6D32B3E296D0032BA86 /* IconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4276A6D22B3E296D0032BA86 /* IconView.swift */; };
 		428610412B4C8B5300A5421A /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 428610402B4C8B5300A5421A /* Launch Screen.storyboard */; };
 		42950DAF2B3E0DEB0034C63A /* ColorCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42950DAE2B3E0DEB0034C63A /* ColorCircleView.swift */; };
@@ -45,7 +44,7 @@
 		42FDCD592B467677008A7730 /* KanbonColumnListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FDCD582B467677008A7730 /* KanbonColumnListView.swift */; };
 		42FDCD5C2B4741DB008A7730 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FDCD5B2B4741DB008A7730 /* HapticManager.swift */; };
 		42FDCD5E2B47494D008A7730 /* EditCurrentItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FDCD5D2B47494D008A7730 /* EditCurrentItemView.swift */; };
-		42FDCD602B4A94F6008A7730 /* EditItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FDCD5F2B4A94F6008A7730 /* EditItemViewModel.swift */; };
+		42FDCD602B4A94F6008A7730 /* CreateAndEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FDCD5F2B4A94F6008A7730 /* CreateAndEditViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,7 +67,6 @@
 		425CDD082B3CB1F400C9A0BA /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		425CDD0B2B3CB36C00C9A0BA /* Dependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dependencies.swift; sourceTree = "<group>"; };
 		425CDD102B3DDA8C00C9A0BA /* AddNewItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewItemView.swift; sourceTree = "<group>"; };
-		425CDD132B3DDAE700C9A0BA /* AddNewItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewItemViewModel.swift; sourceTree = "<group>"; };
 		4276A6D22B3E296D0032BA86 /* IconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconView.swift; sourceTree = "<group>"; };
 		428610402B4C8B5300A5421A /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		42950DAE2B3E0DEB0034C63A /* ColorCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCircleView.swift; sourceTree = "<group>"; };
@@ -90,7 +88,7 @@
 		42FDCD582B467677008A7730 /* KanbonColumnListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KanbonColumnListView.swift; sourceTree = "<group>"; };
 		42FDCD5B2B4741DB008A7730 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 		42FDCD5D2B47494D008A7730 /* EditCurrentItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCurrentItemView.swift; sourceTree = "<group>"; };
-		42FDCD5F2B4A94F6008A7730 /* EditItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditItemViewModel.swift; sourceTree = "<group>"; };
+		42FDCD5F2B4A94F6008A7730 /* CreateAndEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAndEditViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -278,8 +276,7 @@
 		425CDD0F2B3DD93600C9A0BA /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				425CDD132B3DDAE700C9A0BA /* AddNewItemViewModel.swift */,
-				42FDCD5F2B4A94F6008A7730 /* EditItemViewModel.swift */,
+				42FDCD5F2B4A94F6008A7730 /* CreateAndEditViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -417,10 +414,9 @@
 				42D321D72B3EE94C00248069 /* Color.swift in Sources */,
 				425CDCFB2B3C902D00C9A0BA /* ItemDataService.swift in Sources */,
 				42D321E62B41F72F00248069 /* TodayKanbanView.swift in Sources */,
-				42FDCD602B4A94F6008A7730 /* EditItemViewModel.swift in Sources */,
+				42FDCD602B4A94F6008A7730 /* CreateAndEditViewModel.swift in Sources */,
 				425CDCE52B3C8DAE00C9A0BA /* ToDOApp.swift in Sources */,
 				42EC533B2B441C450044A9CD /* KanbanColumnsHeadBox.swift in Sources */,
-				425CDD142B3DDAE700C9A0BA /* AddNewItemViewModel.swift in Sources */,
 				42EC533E2B44A48D0044A9CD /* NotificationManager.swift in Sources */,
 				425CDD002B3CAFB800C9A0BA /* DeveloperPreview.swift in Sources */,
 				42D321D92B408F6500248069 /* ItemRowView.swift in Sources */,

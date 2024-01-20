@@ -9,10 +9,8 @@ import SwiftUI
 
 struct HomeView: View {
     @StateObject private var vm : HomeViewModel
-    
+    @StateObject var createEditVM: CreateAndEditViewModel // for sub views
     @State var showCreateNewItemSheet: Bool = false
-    @State var itemToShow: ItemModel? = nil
-    
     
     //Edit items
     @State var itemToEdit: ItemModel? = nil
@@ -26,7 +24,11 @@ struct HomeView: View {
     let dependencies: Dependencies
     init(dependencies: Dependencies) {
         self.dependencies = dependencies
-        _vm = StateObject(wrappedValue: HomeViewModel(dependencies: dependencies))
+        
+        _vm = StateObject(wrappedValue:
+            HomeViewModel(dependencies: dependencies))
+        
+        _createEditVM = StateObject(wrappedValue: CreateAndEditViewModel(dependencies: dependencies))
     }
     var body: some View {
             ZStack {
@@ -65,17 +67,14 @@ struct HomeView: View {
                         .headerProminence(.increased)
                     }
                     .sheet(isPresented: $showCreateNewItemSheet, content: {
-                        AddNewItemView(dependencies: dependencies)
+                        AddNewItemView()
+                            .environmentObject(createEditVM)
                     })
                     .sheet(item: $itemToEdit){ item in
+                        EditCurrentItemView(title: $TitleToEdit, loc: $locToEdit, disc: $descToEdit, selectedDate: $dateToEdit, icon: $iconToEdit, color: $colorToEdit, item: item)
+                            .environmentObject(createEditVM)
+                    }
                     
-                        EditCurrentItemView(title: $TitleToEdit, loc: $locToEdit, disc: $descToEdit, selectedDate: $dateToEdit, icon: $iconToEdit, color: $colorToEdit, item: item, dependencies: dependencies)
-                    }
-                    .sheet(item: $itemToShow) { item in
-                        DetailsView(item: item)
-                            .presentationDetents([.fraction(0.4)])
-                            .presentationDragIndicator(.visible)
-                    }
                 }
             }
             .toolbar {
@@ -92,19 +91,10 @@ struct HomeView: View {
     }
 }
 extension HomeView {
-    private func showDetails(item : ItemModel) {
-        if (item == itemToShow) {
-            itemToShow = nil
-        } else {
-            itemToShow = item
-        }
-    }
     private var doingList: some View {
         ForEach(vm.doingItems) { item in
             ItemRowView(item: item)
-                .onTapGesture {
-                    showDetails(item: item)
-                }
+               
                 .swipeActions(edge: .trailing, allowsFullSwipe: true) {
                     Button (role: .destructive) {
                         vm.delete(item: item)
@@ -139,9 +129,7 @@ extension HomeView {
     private var todoList: some View {
         ForEach(vm.toDoItems) { item in
             ItemRowView(item: item)
-                .onTapGesture {
-                    showDetails(item: item)
-                }
+                
                 .swipeActions(edge: .trailing, allowsFullSwipe: true) {
                     Button (role: .destructive) {
                         vm.delete(item: item)
@@ -174,9 +162,7 @@ extension HomeView {
     private var doneList: some View {
         ForEach(vm.doneITems) { item in
             ItemRowView(item: item)
-                .onTapGesture {
-                    showDetails(item: item)
-                }
+               
                 .swipeActions(edge: .trailing, allowsFullSwipe: true) {
                     Button (role: .destructive) {
                         vm.delete(item: item)

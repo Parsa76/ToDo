@@ -9,25 +9,39 @@ import SwiftUI
 
 struct ItemRowView: View {
     var item: ItemModel
+    @State var showDetail: Bool = false
     var body: some View {
-        HStack {
-            VStack(alignment: .leading) {
-                Text(item.title)
-                    .font(.title3)
-                    .foregroundStyle(Color.primary)
-                    .bold()
+        
+        VStack(alignment: .leading) {
+            HStack {
+                VStack(alignment: .leading) {
+                    Text(item.title)
+                        .font(.title3)
+                        .foregroundStyle(Color.primary)
+                        .bold()
+                }
+                Spacer()
+                Button {
+                    showDetail.toggle()
+                } label: {
+                    Label("Graph", systemImage: "chevron.right.circle")
+                        .labelStyle(.iconOnly)
+                        .imageScale(.large)
+                        .rotationEffect(.degrees(showDetail ? 90 : 0))
+                }
             }
-            Spacer()
             Text(item.timeToDo.formatted())
                 .font(.subheadline)
                 .foregroundStyle(item.timeToDo < Date() && item.state == 0 ? Color.red : Color.secondary)
             
+            
+            if showDetail {
+                DetailsView(item: item)
+            }
         }
-        .padding()
-        .background(Color.clear)
     }
 }
 
 #Preview {
-    ItemRowView(item: DeveloperPreview.instance.item)
+    ItemRowView(item: DeveloperPreview.instance.item )
 }
