@@ -20,7 +20,7 @@ struct KanbanColumns: View {
         ZStack(alignment: .top) {
             RoundedRectangle(cornerRadius: 10)
                 .fill(isTargeted ? Color.gray.opacity(0.5): Color.theme.background)
-                .frame(width: width ,  height: height ,alignment: .top )
+                .frame(width: width ,  height: height  ,alignment: .top )
                 .background(Color.clear)
             VStack {
                 KanbanColumnsHeadBox(color: color, title: title)

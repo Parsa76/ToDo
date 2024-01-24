@@ -19,7 +19,9 @@ struct ColorCircleView: View {
                 .frame(width: 45)
                 .foregroundColor(color)
             }
+        .frame(width: 55 , height: 55)
         }
+        
 }
 
 #Preview {

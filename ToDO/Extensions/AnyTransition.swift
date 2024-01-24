@@ -5,4 +5,13 @@
 //  Created by Parsa Keshavarz on 22.01.24.
 //
 
-import Foundation
+import SwiftUI
+
+extension AnyTransition {
+    static var moveInAndOut: AnyTransition {
+        .asymmetric(
+            insertion: .move(edge: .top).combined(with: .identity),
+            removal: .move(edge: .top).combined(with: .opacity)
+        )
+    }
+}

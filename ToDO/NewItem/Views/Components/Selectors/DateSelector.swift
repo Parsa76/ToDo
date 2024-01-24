@@ -20,10 +20,11 @@ struct DateSelector: View {
                 Toggle(
                     isOn: $sendNotification,
                     label: {
-                    Text("Send me a reminder")
+                        Text("Send me a reminder")
                     })
             }
-        }    }
+        }
+    }
 }
 
 #Preview {

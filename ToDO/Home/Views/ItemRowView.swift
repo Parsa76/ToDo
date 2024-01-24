@@ -11,7 +11,6 @@ struct ItemRowView: View {
     var item: ItemModel
     @State var showDetail: Bool = false
     var body: some View {
-        
         VStack(alignment: .leading) {
             HStack {
                 VStack(alignment: .leading) {
@@ -22,9 +21,12 @@ struct ItemRowView: View {
                 }
                 Spacer()
                 Button {
-                    showDetail.toggle()
+                    withAnimation(.spring) {
+                        showDetail.toggle()
+                    }
+                    
                 } label: {
-                    Label("Graph", systemImage: "chevron.right.circle")
+                    Label("Details", systemImage: "chevron.right.circle")
                         .labelStyle(.iconOnly)
                         .imageScale(.large)
                         .rotationEffect(.degrees(showDetail ? 90 : 0))
@@ -33,10 +35,9 @@ struct ItemRowView: View {
             Text(item.timeToDo.formatted())
                 .font(.subheadline)
                 .foregroundStyle(item.timeToDo < Date() && item.state == 0 ? Color.red : Color.secondary)
-            
-            
             if showDetail {
                 DetailsView(item: item)
+                    .transition(.moveInAndOut)
             }
         }
     }

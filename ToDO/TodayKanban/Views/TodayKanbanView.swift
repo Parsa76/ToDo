@@ -20,22 +20,14 @@ struct TodayKanbanView: View {
     var body: some View {
         let width = UIScreen.main.bounds.width / 3
         let height = UIScreen.main.bounds.height
-        VStack (alignment: .leading){
-            Text("Today")
-                .font(.title)
-                .fontWeight(.heavy)
-                .padding()
-            ScrollView {
-                VStack (spacing: 6) {
-                    HStack (alignment : .top){
-                        KanbanColumns(isTargeted: $isTodoTargeted, width: width, height: height, color: .blue, title: "To do", items: vm.toDoItems, state: 0)
-                            .environmentObject(vm)
-                        KanbanColumns(isTargeted: $isDoingTargeted, width: width, height: height, color: .yellow, title: "Doing" , items: vm.doingItems, state: 1)
-                            .environmentObject(vm)
-                        KanbanColumns(isTargeted: $isDoneTargeted, width: width, height: height, color: .green, title: "Done" ,  items: vm.doneITems, state: 2)
-                            .environmentObject(vm)
-                    }
-                }
+        ScrollView {
+            HStack (alignment : .top){
+                KanbanColumns(isTargeted: $isTodoTargeted, width: width, height: height, color: .blue, title: "To do", items: vm.toDoItems, state: 0)
+                    .environmentObject(vm)
+                KanbanColumns(isTargeted: $isDoingTargeted, width: width, height: height, color: .yellow, title: "Doing" , items: vm.doingItems, state: 1)
+                    .environmentObject(vm)
+                KanbanColumns(isTargeted: $isDoneTargeted, width: width, height: height, color: .green, title: "Done" ,  items: vm.doneITems, state: 2)
+                    .environmentObject(vm)
             }
         }
     }

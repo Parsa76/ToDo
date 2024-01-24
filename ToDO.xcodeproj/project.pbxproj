@@ -35,6 +35,7 @@
 		42D321E12B41A97A00248069 /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D321E02B41A97A00248069 /* DetailsView.swift */; };
 		42D321E62B41F72F00248069 /* TodayKanbanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D321E52B41F72F00248069 /* TodayKanbanView.swift */; };
 		42D321E82B41F89C00248069 /* TodayKanbanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D321E72B41F89C00248069 /* TodayKanbanViewModel.swift */; };
+		42E908B52B5E7E3100FCBC23 /* AnyTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E908B42B5E7E3100FCBC23 /* AnyTransition.swift */; };
 		42EC53372B4333760044A9CD /* KanbanBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EC53362B4333760044A9CD /* KanbanBoxView.swift */; };
 		42EC53392B4335890044A9CD /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EC53382B4335890044A9CD /* Date.swift */; };
 		42EC533B2B441C450044A9CD /* KanbanColumnsHeadBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EC533A2B441C450044A9CD /* KanbanColumnsHeadBox.swift */; };
@@ -77,6 +78,7 @@
 		42D321E02B41A97A00248069 /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
 		42D321E52B41F72F00248069 /* TodayKanbanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayKanbanView.swift; sourceTree = "<group>"; };
 		42D321E72B41F89C00248069 /* TodayKanbanViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayKanbanViewModel.swift; sourceTree = "<group>"; };
+		42E908B42B5E7E3100FCBC23 /* AnyTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyTransition.swift; sourceTree = "<group>"; };
 		42EC53362B4333760044A9CD /* KanbanBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KanbanBoxView.swift; sourceTree = "<group>"; };
 		42EC53382B4335890044A9CD /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		42EC533A2B441C450044A9CD /* KanbanColumnsHeadBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KanbanColumnsHeadBox.swift; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 				42D321DA2B40937E00248069 /* Int16.swift */,
 				42EC53382B4335890044A9CD /* Date.swift */,
 				42EC53492B4579160044A9CD /* UTType.swift */,
+				42E908B42B5E7E3100FCBC23 /* AnyTransition.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -414,6 +417,7 @@
 				42D321D72B3EE94C00248069 /* Color.swift in Sources */,
 				425CDCFB2B3C902D00C9A0BA /* ItemDataService.swift in Sources */,
 				42D321E62B41F72F00248069 /* TodayKanbanView.swift in Sources */,
+				42E908B52B5E7E3100FCBC23 /* AnyTransition.swift in Sources */,
 				42FDCD602B4A94F6008A7730 /* CreateAndEditViewModel.swift in Sources */,
 				425CDCE52B3C8DAE00C9A0BA /* ToDOApp.swift in Sources */,
 				42EC533B2B441C450044A9CD /* KanbanColumnsHeadBox.swift in Sources */,
@@ -565,7 +569,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -604,7 +608,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

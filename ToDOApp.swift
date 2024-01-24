@@ -12,20 +12,26 @@ struct ToDOApp: App {
     let dependencies: Dependencies = Dependencies()
     var body: some Scene {
         WindowGroup {
-            NavigationView {
-                TabView {
+            TabView {
+                NavigationView {
                     HomeView(dependencies: dependencies)
-                        .tabItem {
-                            Label("Home",systemImage: "house.circle")
-                        }
-                    TodayKanbanView(dependencies: dependencies)
-                        .tabItem {
-                            Label("Kanban",systemImage: "calendar.circle.fill")
-                        }
+                    
                 }
+                .tabItem {
+                    Label("Home",systemImage: "house.circle")
+                }
+                
+                .navigationViewStyle(StackNavigationViewStyle())
+                NavigationView {
+                    TodayKanbanView(dependencies: dependencies)
+                        .navigationTitle("Today")
+                }
+                .tabItem {
+                    Label("Kanban",systemImage: "calendar.circle.fill")
+                }
+                
+                .navigationViewStyle(StackNavigationViewStyle())
             }
-            .frame(height: UIScreen.main.bounds.height)
-            .navigationViewStyle(StackNavigationViewStyle())
         }
     }
 }

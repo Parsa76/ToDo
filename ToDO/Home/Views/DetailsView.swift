@@ -9,8 +9,6 @@ import SwiftUI
 
 struct DetailsView: View {
     let item : ItemModel
-    
- 
     var body: some View {
             HStack(alignment: .center) {
                 Text(item.description)
@@ -20,7 +18,6 @@ struct DetailsView: View {
                 IconRowView(color: item.color.decodeAsColor(), symbol: item.icon)
                 
             }
-            
     }
 }
 

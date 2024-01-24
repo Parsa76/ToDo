@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @StateObject private var vm : HomeViewModel
-    @StateObject var createEditVM: CreateAndEditViewModel // for sub views
+    @StateObject var createEditVM: CreateAndEditViewModel //for sub views
     @State var showCreateNewItemSheet: Bool = false
     
     //Edit items
@@ -43,14 +43,14 @@ struct HomeView: View {
                             
                         ) {
                             todoList
-                                
                         }
                         .headerProminence(.increased)
                         Section(header: 
                                     HStack {
                             Image(systemName: "hourglass.circle")
                             Text("Doing items")
-                        }.foregroundStyle(Color.yellow)
+                        }
+                            .foregroundStyle(Color.yellow)
                             .fontWeight(.heavy)
                                     ) {
                             doingList
@@ -129,7 +129,6 @@ extension HomeView {
     private var todoList: some View {
         ForEach(vm.toDoItems) { item in
             ItemRowView(item: item)
-                
                 .swipeActions(edge: .trailing, allowsFullSwipe: true) {
                     Button (role: .destructive) {
                         vm.delete(item: item)
@@ -202,6 +201,8 @@ extension HomeView {
         colorToEdit = item.color.decodeAsColor()
         dateToEdit = item.timeToDo
     }
+    
+    
 }
 
 #Preview {

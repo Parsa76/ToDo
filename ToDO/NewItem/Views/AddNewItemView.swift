@@ -41,7 +41,7 @@ struct AddNewItemView: View {
                         DescriptionTextField(desciptionTextField: $desciptionTextField)
                     }
                     Section {
-                        customizedIcon
+                        IconView(color: selectedColor, symbol: selectedSymbol)
                     }
                     Section(header: Text("Pick a color")) {
                         ColorSelector(selectedColor: $selectedColor)
@@ -51,6 +51,7 @@ struct AddNewItemView: View {
                     }
                 }
                 .listStyle(.sidebar)
+                
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -65,13 +66,7 @@ struct AddNewItemView: View {
 }
 extension AddNewItemView {
 
-    private var customizedIcon: some View {
-        HStack(alignment: .center){
-            Spacer()
-            IconView(color: selectedColor, symbol: selectedSymbol)
-            Spacer()
-        }
-    }
+
     private var saveButton: some View {
         Button {
             let id = UUID().uuidString

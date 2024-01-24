@@ -55,7 +55,7 @@ struct EditCurrentItemView: View {
                         DescriptionTextField(desciptionTextField: $disc)
                     }
                     Section {
-                        customizedIcon
+                        IconView(color: color, symbol: icon)
                     }
                     Section(header: Text("Pick a color")) {
                         ColorSelector(selectedColor: $color)
@@ -80,13 +80,7 @@ struct EditCurrentItemView: View {
     }
 }
 extension EditCurrentItemView {
-    private var customizedIcon: some View {
-        HStack(alignment: .center){
-            Spacer()
-            IconView(color: color, symbol: icon)
-            Spacer()
-        }
-    }
+    
     private var saveButton: some View {
         Button {
             vm.updateItem(item: item, title: title, loc: loc, description: disc, selectedDate: selectedDate, color: color.codeAsInt(), icon: icon, remeinder: sendNotification)
@@ -116,6 +110,6 @@ extension EditCurrentItemView {
 }
 
 #Preview {
-    EditCurrentItemView(title: .constant(""), loc: .constant(""), disc: .constant(""), selectedDate: .constant(Date()), icon: .constant(""), color: .constant(.red), item: DeveloperPreview.instance.item)
+    EditCurrentItemView(title: .constant(""), loc: .constant(""), disc: .constant(""), selectedDate: .constant(Date()), icon: .constant("book.fill"), color: .constant(.red), item: DeveloperPreview.instance.item)
         .environmentObject(CreateAndEditViewModel(dependencies: Dependencies()))
 }
