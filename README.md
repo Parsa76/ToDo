@@ -56,8 +56,7 @@ The app is designed to support both iPhone and iPad devices, offering a responsi
 ## How to Use
 
 1. Clone this repository.
-2. Follow the installation instructions in the 'Installation.md' file.
-3. Run the app on your local machine.
+2. Run the app on your local machine.
 
 Feel free to contribute by submitting pull requests or reporting issues.
 
@@ -65,6 +64,3 @@ Feel free to contribute by submitting pull requests or reporting issues.
 
 - The 'Atomic Habits' book by James Clear for inspiring the methodology behind this To-Do app.
 
-## License
-
-This project is licensed under the [MIT License](LICENSE).
